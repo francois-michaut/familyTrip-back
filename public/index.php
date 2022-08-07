@@ -14,20 +14,20 @@ $router->map(
         'action' => 'home',
         'controller' => 'MainController'
     ],
-    'home-page'
+    'home'
 );
 
 $match = $router->match();
 
 if ( $match )
 {
-    $controllerToUse = '\\Controller\\' . 'Maincontroller' ;
+    $controllerToUse = '\\FamilyTrip\\Controllers\\' . $match['target']['controller'] ;
     $methodToUse = $match['target']['action'];
 } else 
 {
-    $controllerToUse = '\\Controller' . 'Maincontroller';
+    $controllerToUse = '\\FamilyTrip\\Controllers\\' . 'MainController';
     $methodToUse = 'err404';
 }
 
 $controller = new $controllerToUse();
-$controller->$methodToUse;
+$controller->$methodToUse();
