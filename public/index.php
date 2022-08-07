@@ -16,6 +16,15 @@ $router->map(
     ],
     'home'
 );
+$router->map(
+    'GET',
+    '/activity',
+    [
+        'action' => 'activity',
+        'controller' => 'MainController'
+    ],
+    'activity'
+);
 
 $match = $router->match();
 

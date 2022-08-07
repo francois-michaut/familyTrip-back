@@ -16,6 +16,10 @@ class MainController
     {
         $this->show( 'home');
     }
+    public function activity()
+    {
+        $this->show( 'activity');
+    }
 
     public function err404()
     {

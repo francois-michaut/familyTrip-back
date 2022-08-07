@@ -4,6 +4,10 @@ body {
 .header {
     text-align: center;
 }
+.header__title {
+    font-family: 'Bangers', cursive;
+    font-size: 3rem;
+}
 .header__navbar {
     background-color: rgb(224, 156, 9);
     line-height: 2rem;
@@ -48,6 +52,34 @@ a {
     border-radius: 20px;
     background-color: tomato;
     color: white;
+}
+.activity {
+    margin: 20px;
+    height: 600px;
+}
+.activity__title {
+    width: 50%;
+    margin:  40px auto;
+    text-align: center;
+}
+.activity__table table {
+    width: 80%;
+    text-align: center;
+    border: 3px solid grey;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+td, th, tr {
+    border: 1px solid rgb(20, 77, 15);
+    padding: 8px;
+}
+.row {
+    background-color: rgb(107, 160, 55);
+    color: white;
+}
+thead {
+    font-weight: bold;
 }
 
 .footer {
