@@ -89,38 +89,21 @@ thead {
     text-align: center;
     color: white;
 }
-.user {
-    text-align: center;
-    margin: 20px;
-    height: 550px;
-}
-.user__title {
-    margin: 40px;
-}
-.user__table {
-    display: flex;
-    justify-content: center;
 
-}
-.user__table table {
-    width: 80%;
-    border-collapse: collapse;
-    border: 3px solid grey;
-}
-.shoppinglist {
+.shoppinglist, .remember, .user  {
     height: 550px;
     margin: 40px;
     text-align: center;
 }
-.shoppinglist__title {
+.shoppinglist__title, .remember__title, .user__title {
     margin: 40px;
 }
-.shoppinglist__table {
+.shoppinglist__table, .remember__table, .user__table {
     display: flex;
     justify-content: center;
     
 }
-.shoppinglist__table table {
+.shoppinglist__table table, .remember__table table, .user__table table {
     width: 80%;
     border-collapse: collapse;
     border: 3px solid grey;

@@ -26,6 +26,10 @@ class MainController
     {
         $this->show( 'shoppinglist' );
     }
+    public function remember()
+    {
+        $this->show( 'remember' );
+    }
 
     public function user()
     {

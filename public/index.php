@@ -36,6 +36,15 @@ $router->map(
 );
 $router->map(
     'GET',
+    '/remember',
+    [
+        'action' => 'remember',
+        'controller' => 'MainController'
+    ],
+    'remember'
+);
+$router->map(
+    'GET',
     '/user',
     [
         'action' => 'user',
