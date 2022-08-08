@@ -16,7 +16,7 @@
         <nav class="header__navbar">
             <ul class="header__navbar-list">
                 <li><a href="<?= $_SERVER['BASE_URI']?>/activity">Activités</a></li>
-                <li><a href="#">Shoppinglist</a></li>
+                <li><a href="<?= $_SERVER['BASE_URI']?>/shoppinglist">Shoppinglist</a></li>
                 <li><a href="#">Souvenirs</a></li>
                 <li><a href="#">Tribus</a></li>
                 <li><a href="<?= $_SERVER['BASE_URI']?>/user">Membres</a></li>
