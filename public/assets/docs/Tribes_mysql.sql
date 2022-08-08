@@ -2,84 +2,74 @@ CREATE DATABASE IF NOT EXISTS `TRIBES` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 USE `TRIBES`;
 
 CREATE TABLE `ACTIVITY` (
-  `id` VARCHAR(42),
-  `name` VARCHAR(42),
-  `date` VARCHAR(42),
+  `activity_code` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `type` VARCHAR(42),
   `location` VARCHAR(42),
-  `duration` VARCHAR(42),
+  `date` DATE,
   `hourly` VARCHAR(42),
-  `nb-person` VARCHAR(42),
-  `to_check` VARCHAR(42),
-  PRIMARY KEY (`id`)
+  `nb_members` VARCHAR(42),
+  `more` VARCHAR(42),
+  PRIMARY KEY (`activity_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `DEPENDS_ON` (
-  `id` VARCHAR(42),
-  `id_1` VARCHAR(42),
-  `activity_id` VARCHAR(42),
-  `tribe_id` VARCHAR(42),
-  PRIMARY KEY (`id`, `id_1`)
+CREATE TABLE `IS_MADE_BY` (
+  `activity_code` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `tribe_code` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`activity_code`, `tribe_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `BELONGS_TO` (
-  `id` VARCHAR(42),
-  `id_1` VARCHAR(42),
-  `member_id` VARCHAR(42),
-  `tribe_id` VARCHAR(42),
-  PRIMARY KEY (`id`, `id_1`)
+  `tribe_code` INT,
+  `user_id` INT,
+  PRIMARY KEY (`tribe_code`, `user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `MEMBER` (
-  `id` VARCHAR(42),
+CREATE TABLE `USER` (
+  `user_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `firstname` VARCHAR(42),
   `lastname` VARCHAR(42),
-  PRIMARY KEY (`id`)
+  `email` VARCHAR(42),
+  `password` VARCHAR(42),
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `TRIBE` (
-  `id` VARCHAR(42),
+  `tribe_code` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(42),
-  `nb_members` VARCHAR(42),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`tribe_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `REMEMBER` (
-  `id` VARCHAR(42),
-  `date` VARCHAR(42),
+  `remember_code` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `location` VARCHAR(42),
+  `date` VARCHAR(42),
   `members` VARCHAR(42),
-  `story` VARCHAR(42),
-  `picture` VARCHAR(42),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`remember_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `WAS_LIVED_BY` (
-  `id` VARCHAR(42),
-  `id_1` VARCHAR(42),
-  `remember_id` VARCHAR(42),
-  `tribe_id` VARCHAR(42),
-  PRIMARY KEY (`id`, `id_1`)
+  `tribe_code` INT,
+  `remember_code` INT,
+  PRIMARY KEY (`tribe_code`, `remember_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `WRITTEN_BY` (
-  `id` VARCHAR(42),
-  `id_1` VARCHAR(42),
-  `tribe_id` VARCHAR(42),
-  `shoppinglist_id` VARCHAR(42),
-  PRIMARY KEY (`id`, `id_1`)
+CREATE TABLE `WRITES_BY` (
+  `tribe_code` INT,
+  `shoppinglist_code` INT,
+  PRIMARY KEY (`tribe_code`, `shoppinglist_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `SHOPPINGLIST` (
-  `id` VARCHAR(42),
+  `shoppinglist_code` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `list` VARCHAR(42),
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`shoppinglist_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-ALTER TABLE `DEPENDS_ON` ADD FOREIGN KEY (`id_1`) REFERENCES `TRIBE` (`id`);
-ALTER TABLE `DEPENDS_ON` ADD FOREIGN KEY (`id`) REFERENCES `ACTIVITY` (`id`);
-ALTER TABLE `BELONGS_TO` ADD FOREIGN KEY (`id_1`) REFERENCES `TRIBE` (`id`);
-ALTER TABLE `BELONGS_TO` ADD FOREIGN KEY (`id`) REFERENCES `MEMBER` (`id`);
-ALTER TABLE `WAS_LIVED_BY` ADD FOREIGN KEY (`id_1`) REFERENCES `REMEMBER` (`id`);
-ALTER TABLE `WAS_LIVED_BY` ADD FOREIGN KEY (`id`) REFERENCES `TRIBE` (`id`);
-ALTER TABLE `WRITTEN_BY` ADD FOREIGN KEY (`id_1`) REFERENCES `SHOPPINGLIST` (`id`);
-ALTER TABLE `WRITTEN_BY` ADD FOREIGN KEY (`id`) REFERENCES `TRIBE` (`id`);
+ALTER TABLE `IS_MADE_BY` ADD FOREIGN KEY (`tribe_code`) REFERENCES `TRIBE` (`tribe_code`);
+ALTER TABLE `IS_MADE_BY` ADD FOREIGN KEY (`activity_code`) REFERENCES `ACTIVITY` (`activity_code`);
+ALTER TABLE `BELONGS_TO` ADD FOREIGN KEY (`user_id`) REFERENCES `USER` (`user_id`);
+ALTER TABLE `BELONGS_TO` ADD FOREIGN KEY (`tribe_code`) REFERENCES `TRIBE` (`tribe_code`);
+ALTER TABLE `WAS_LIVED_BY` ADD FOREIGN KEY (`remember_code`) REFERENCES `REMEMBER` (`remember_code`);
+ALTER TABLE `WAS_LIVED_BY` ADD FOREIGN KEY (`tribe_code`) REFERENCES `TRIBE` (`tribe_code`);
+ALTER TABLE `WRITES_BY` ADD FOREIGN KEY (`shoppinglist_code`) REFERENCES `SHOPPINGLIST` (`shoppinglist_code`);
+ALTER TABLE `WRITES_BY` ADD FOREIGN KEY (`tribe_code`) REFERENCES `TRIBE` (`tribe_code`);

@@ -25,6 +25,15 @@ $router->map(
     ],
     'activity'
 );
+$router->map(
+    'GET',
+    '/user',
+    [
+        'action' => 'user',
+        'controller' => 'MainController'
+    ],
+    'user'
+);
 
 $match = $router->match();
 

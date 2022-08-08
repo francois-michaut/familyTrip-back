@@ -2,6 +2,8 @@
 
 namespace FamilyTrip\Controllers;
 
+use FamilyTrip\Models\User;
+
 class MainController
 {
 
@@ -19,6 +21,15 @@ class MainController
     public function activity()
     {
         $this->show( 'activity');
+    }
+
+    public function user()
+    {
+        $user = new User();
+
+        $userList = $user->findAll();
+
+        $this->show( 'user', $userList);
     }
 
     public function err404()

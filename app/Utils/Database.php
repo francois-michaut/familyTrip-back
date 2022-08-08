@@ -1,6 +1,6 @@
 <?php
 
-namespace Sonic\Utils;
+namespace FamilyTrip\Utils;
 
 use PDO;
 
