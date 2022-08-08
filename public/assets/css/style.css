@@ -98,9 +98,30 @@ thead {
     margin: 40px;
 }
 .user__table {
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
     display: flex;
     justify-content: center;
+
+}
+.user__table table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 3px solid grey;
+}
+.shoppinglist {
+    height: 550px;
+    margin: 40px;
+    text-align: center;
+}
+.shoppinglist__title {
+    margin: 40px;
+}
+.shoppinglist__table {
+    display: flex;
+    justify-content: center;
+    
+}
+.shoppinglist__table table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 3px solid grey;
 }

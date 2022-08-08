@@ -22,6 +22,10 @@ class MainController
     {
         $this->show( 'activity');
     }
+    public function shoppinglist()
+    {
+        $this->show( 'shoppinglist' );
+    }
 
     public function user()
     {

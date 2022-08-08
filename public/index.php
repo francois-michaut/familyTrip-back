@@ -27,6 +27,15 @@ $router->map(
 );
 $router->map(
     'GET',
+    '/shoppinglist',
+    [
+        'action' => 'shoppinglist',
+        'controller' => 'MainController'
+    ],
+    'shoppinglist'
+);
+$router->map(
+    'GET',
     '/user',
     [
         'action' => 'user',
