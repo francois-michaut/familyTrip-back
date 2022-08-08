@@ -45,6 +45,15 @@ $router->map(
 );
 $router->map(
     'GET',
+    '/tribe',
+    [
+        'action' => 'tribe',
+        'controller' => 'MainController'
+    ],
+    'tribe'
+);
+$router->map(
+    'GET',
     '/user',
     [
         'action' => 'user',
