@@ -30,6 +30,10 @@ class MainController
     {
         $this->show( 'remember' );
     }
+    public function tribe()
+    {
+        $this->show( 'tribe' );
+    }
 
     public function user()
     {

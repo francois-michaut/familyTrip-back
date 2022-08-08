@@ -53,23 +53,6 @@ a {
     background-color: tomato;
     color: white;
 }
-.activity {
-    margin: 20px;
-    height: 550px;
-}
-.activity__title {
-    width: 50%;
-    margin:  40px auto;
-    text-align: center;
-}
-.activity__table table {
-    width: 80%;
-    text-align: center;
-    border: 3px solid grey;
-    margin-left: auto;
-    margin-right: auto;
-    border-collapse: collapse;
-}
 td, th, tr {
     border: 1px solid rgb(20, 77, 15);
     padding: 8px;
@@ -90,20 +73,20 @@ thead {
     color: white;
 }
 
-.shoppinglist, .remember, .user  {
+.shoppinglist, .remember, .user, .tribe, .activity  {
     height: 550px;
     margin: 40px;
     text-align: center;
 }
-.shoppinglist__title, .remember__title, .user__title {
+.shoppinglist__title, .activity__title , .remember__title, .user__title, .tribe__title {
     margin: 40px;
 }
-.shoppinglist__table, .remember__table, .user__table {
+.shoppinglist__table, .activity__table, .remember__table, .user__table, .tribe__table {
     display: flex;
     justify-content: center;
     
 }
-.shoppinglist__table table, .remember__table table, .user__table table {
+.shoppinglist__table table, .activity__table table, .remember__table table, .user__table table, .tribe__table table {
     width: 80%;
     border-collapse: collapse;
     border: 3px solid grey;

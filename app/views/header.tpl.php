@@ -18,7 +18,7 @@
                 <li><a href="<?= $_SERVER['BASE_URI']?>/activity">Activités</a></li>
                 <li><a href="<?= $_SERVER['BASE_URI']?>/shoppinglist">Shoppinglist</a></li>
                 <li><a href="<?= $_SERVER['BASE_URI']?>/remember">Souvenirs</a></li>
-                <li><a href="#">Tribus</a></li>
+                <li><a href="<?= $_SERVER['BASE_URI']?>/tribe">Tribus</a></li>
                 <li><a href="<?= $_SERVER['BASE_URI']?>/user">Membres</a></li>
             </ul>
         </nav>
