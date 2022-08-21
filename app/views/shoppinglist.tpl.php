@@ -9,6 +9,12 @@
                     <td>Liste</td>
                 </thead>
                 <tbody>
+                    <?php foreach( $param['shoppingListsList'] as $key => $shoppingList) { ?>
+                        <tr class="first-row row">
+                            <th>Inconnue</th>
+                            <th><?= $shoppingList['list'] ?></th>
+                        </tr>
+                   <?php } ?>
                 </tbody>
         </table>
     </div>

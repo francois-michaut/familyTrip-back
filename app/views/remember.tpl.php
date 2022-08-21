@@ -7,8 +7,16 @@
                     <td>Lieu</td>
                     <td>Date</td>
                     <td>Personnes présentes</td>
-                </thead>
+                </thead> 
                 <tbody>
+                    <?php foreach( $param['remembersList'] as $key => $remember) { ?>
+                        <tr class="first-row row">
+                            <th><?= $remember['name']?></th>
+                            <th><?= $remember['location']?></th>
+                            <th><?= $remember['date']?></th>
+                            <th>Inconnu</th>
+                        </tr>
+                   <?php } ?>
                 </tbody>
         </table>
     </div>

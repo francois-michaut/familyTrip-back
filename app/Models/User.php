@@ -15,6 +15,7 @@ class User extends CoreModel
     private $lastname;
     private $email;
     private $password; 
+    private $tribe_id;
 
     // ==================
     // Méthodes
@@ -29,8 +30,24 @@ class User extends CoreModel
 
         $userList = $statement->fetchAll( PDO::FETCH_ASSOC );
 
+        // $userList = json_encode($userList);
+        // dump($userList);
         return $userList;
     }
+
+    public function findMembersByTribeId( $tribeId )
+    {
+        $pdo = Database::getPDO();
+
+        $sql = "SELECT * FROM `USER` WHERE `USER`.tribe_id = $tribeId ";
+
+        $statement = $pdo->query( $sql );
+
+        $membersList = $statement->fetchAll( PDO::FETCH_ASSOC );
+
+        return $membersList;
+    }
+
 
     // ===================
     // Getters et Setters
@@ -112,6 +129,26 @@ class User extends CoreModel
     public function setPassword($password)
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of tribe_id
+     */ 
+    public function getTribe_id()
+    {
+        return $this->tribe_id;
+    }
+
+    /**
+     * Set the value of tribe_id
+     *
+     * @return  self
+     */ 
+    public function setTribe_id($tribe_id)
+    {
+        $this->tribe_id = $tribe_id;
 
         return $this;
     }

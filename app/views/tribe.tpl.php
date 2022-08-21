@@ -7,6 +7,12 @@
                     <td>Membres de la tribu</td>
                 </thead>
                 <tbody>
+                 <?php foreach( $param['tribesList'] as $key => $tribe) { ?>
+                    <tr class="first-row row">
+                        <th><?= $tribe['name'] ?></th>
+                        <th>Inconnus pour l'instant</th>
+                    <?php }    ?>
+                 </tr>
                 </tbody>
         </table>
     </div>

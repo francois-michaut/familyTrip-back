@@ -5,14 +5,20 @@ require __DIR__ . '//../vendor/autoload.php';
 
 $router = new AltoRouter();
 
-$router->setBasePath( $_SERVER['BASE_URI']);
-
+if (array_key_exists('BASE_URI', $_SERVER)) {
+    // Alors on définit le basePath d'AltoRouter
+    $router->setBasePath($_SERVER['BASE_URI']);
+    // ainsi, nos routes correspondront à l'URL, après la suite de sous-répertoire
+} else { // sinon
+    // On donne une valeur par défaut à $_SERVER['BASE_URI'] car c'est utilisé dans le CoreController
+    $_SERVER['BASE_URI'] = '/';
+}
 $router->map(
     'GET',
     '/',
     [
         'action' => 'home',
-        'controller' => 'MainController'
+    'controller' => 'Admin\MainController'
     ],
     'home'
 );
@@ -21,7 +27,7 @@ $router->map(
     '/activity',
     [
         'action' => 'activity',
-        'controller' => 'MainController'
+        'controller' => 'Admin\MainController'
     ],
     'activity'
 );
@@ -30,7 +36,7 @@ $router->map(
     '/shoppinglist',
     [
         'action' => 'shoppinglist',
-        'controller' => 'MainController'
+        'controller' => 'Admin\MainController'
     ],
     'shoppinglist'
 );
@@ -39,7 +45,7 @@ $router->map(
     '/remember',
     [
         'action' => 'remember',
-        'controller' => 'MainController'
+        'controller' => 'Admin\MainController'
     ],
     'remember'
 );
@@ -48,7 +54,7 @@ $router->map(
     '/tribe',
     [
         'action' => 'tribe',
-        'controller' => 'MainController'
+        'controller' => 'Admin\MainController'
     ],
     'tribe'
 );
@@ -57,10 +63,29 @@ $router->map(
     '/user',
     [
         'action' => 'user',
-        'controller' => 'MainController'
+        'controller' => 'Admin\MainController'
     ],
     'user'
 );
+$router->map(
+    'GET',
+    '/Api/members',
+    [
+        'action' => 'getUsers',
+        'controller' => 'Api\UserController'
+    ],
+    'members'
+);
+$router->map(
+    'POST',
+    '/Api/createTribe',
+    [
+        'action' => 'postTribeName',
+        'controller' => 'Api\TribeController'
+    ],
+    'tribeCreation'
+);
+
 
 $match = $router->match();
 
@@ -70,7 +95,7 @@ if ( $match )
     $methodToUse = $match['target']['action'];
 } else 
 {
-    $controllerToUse = '\\FamilyTrip\\Controllers\\' . 'MainController';
+    $controllerToUse = '\\FamilyTrip\\Controllers\\' . 'Admin\MainController';
     $methodToUse = 'err404';
 }
 
