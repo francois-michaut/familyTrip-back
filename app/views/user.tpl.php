@@ -8,7 +8,7 @@
                 <td>Email</td>
             </thead>
             <tbody>
-            <?php foreach( $param as $key => $user) { ?>
+            <?php foreach( $param['userList'] as $key => $user) { ?>
                 <tr class="first-row row">
                         <th><?= $user['lastname'] ?></th>
                         <th><?= $user['firstname']?></th>

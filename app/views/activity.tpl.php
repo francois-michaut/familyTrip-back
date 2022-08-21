@@ -3,30 +3,23 @@
     <div class="activity__table">
         <table>
             <thead>
-                <td>Nom</td>
+                <td>Type</td>
                 <td>Date</td>
                 <td>Lieu</td>
                 <td>Horaires</td>
+                <td>Infos utiles</td>
             </thead>
             <tbody>
-                <tr class="first-row row">
-                    <th>Randonnée</th>
-                    <th>22/12/2024</th>
-                    <th>Nice</th>
-                    <th>15h</th>
-                </tr>
-                <tr class="second-row row">
-                    <th>Cinéma</th>
-                    <th>22/12/2024</th>
-                    <th>Nantes</th>
-                    <th>22h</th>
-                </tr>
-                <tr class="first-row row">
-                    <th>Vélo</th>
-                    <th>22/12/2024</th>
-                    <th>Paris</th>
-                    <th>10h</th>
-                </tr>
+                <?php foreach( $param['activitiesList'] as $key => $activity ) { ?>
+                    <tr class="first-row row">
+                        <th><?= $activity['type'] ?></th>
+                        <th><?= $activity['date'] ?></th>
+                        <th><?= $activity['location']?></th>
+                        <th><?= $activity['hourly'] ?></th>
+                        <th><?= $activity['more'] ?></th>
+                    </tr>
+
+               <?php } ?>
             </tbody>
         </table>
     </div>
