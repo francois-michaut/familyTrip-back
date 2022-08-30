@@ -20,13 +20,30 @@ class Tribe extends CoreModel
     {
         $pdo = Database::getPDO();
 
-        $sql = "SELECT * FROM `TRIBE`";
+        $sql = "SELECT * FROM `TRIBE` ORDER BY `name`";
 
         $statement = $pdo->query( $sql );
 
         $tribeList = $statement->fetchAll( PDO::FETCH_ASSOC );
 
         return $tribeList;
+    }
+
+    public function addTribe($tribeName)
+    {
+        $pdo = Database::getPDO();
+
+        $sql = "INSERT INTO `TRIBE` (name) VALUES (:name)";
+
+        $statement = $pdo->prepare( $sql );
+
+        $statement->bindParam(':name', $tribeName);
+
+        $statement->execute();
+
+        $response = 'la tribu a bien été ajoutée!';
+
+        return $response;
     }
     
     // ==================

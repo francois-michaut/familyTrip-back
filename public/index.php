@@ -5,6 +5,11 @@ require __DIR__ . '//../vendor/autoload.php';
 
 $router = new AltoRouter();
 
+
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Methods:  OPTIONS, GET, POST, PUT, DELETE");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, X-Requested-With");
+
 if (array_key_exists('BASE_URI', $_SERVER)) {
     // Alors on définit le basePath d'AltoRouter
     $router->setBasePath($_SERVER['BASE_URI']);
@@ -76,14 +81,32 @@ $router->map(
     ],
     'members'
 );
+// $router->map(
+//     'GET',
+//     '/Api/createTribe',
+//     [
+//         'action' => 'postTribeName',
+//         'controller' => 'Api\TribeController'
+//     ],
+//     'tribeCreation'
+// );
 $router->map(
     'POST',
-    '/Api/createTribe',
+    '/Api/createTribePost',
     [
-        'action' => 'postTribeName',
+        'action' => 'postTribeNamePost',
         'controller' => 'Api\TribeController'
     ],
-    'tribeCreation'
+    'tribeCreationPost'
+);
+$router->map(
+    'GET',
+    '/Api/tribes',
+    [
+        'action' => 'getTribes',
+        'controller' => 'Api\TribeController'
+    ],
+    'tribesList'
 );
 
 
