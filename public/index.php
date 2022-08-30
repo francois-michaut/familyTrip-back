@@ -100,6 +100,15 @@ $router->map(
     'tribeCreationPost'
 );
 $router->map(
+    'POST',
+    '/Api/createActivityPost',
+    [
+        'action' => 'activityPost',
+        'controller' => 'Api\ActivityController'
+    ],
+    'activityCreationPost'
+);
+$router->map(
     'GET',
     '/Api/tribes',
     [

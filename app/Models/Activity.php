@@ -34,11 +34,22 @@ class Activity extends CoreModel
         return $activitiesList;
     }
 
-    public function findActivitiesByTribe($tribeId)
+    public function addActivity($type, $location, $date, $hourly, $nb_members, $description )
     {
         $pdo = Database::getPDO();
 
-        $sql = "";
+        $sql = "INSERT INTO `ACTIVITY` (type, location, date, hourly, nb_members, more) VALUES (:type, :location, :date, :hourly, :nb_members, :more)";
+
+        $statement = $pdo->prepare($sql);
+
+        $statement->bindParam(':type', $type);
+        $statement->bindParam(':location', $location);
+        $statement->bindParam(':date', $date);
+        $statement->bindParam(':hourly', $hourly);
+        $statement->bindParam(':nb_members', $nb_members);
+        $statement->bindParam(':more', $description);
+
+        $statement->execute();
     }
 
     // ===============
