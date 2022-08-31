@@ -81,15 +81,15 @@ $router->map(
     ],
     'members'
 );
-// $router->map(
-//     'GET',
-//     '/Api/createTribe',
-//     [
-//         'action' => 'postTribeName',
-//         'controller' => 'Api\TribeController'
-//     ],
-//     'tribeCreation'
-// );
+$router->map(
+    'POST',
+    '/Api/createRememberPost',
+    [
+        'action' => 'rememberPost',
+        'controller' => 'Api\RememberController'
+    ],
+    'rememberCreationPost'
+);
 $router->map(
     'POST',
     '/Api/createTribePost',

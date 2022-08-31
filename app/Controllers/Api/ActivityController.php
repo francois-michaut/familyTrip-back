@@ -12,18 +12,15 @@ class ActivityController
 
         $activity = json_decode($data, true);
 
+        print_r($activity);
+
         $type = $activity['typeActivity'];
         $location = $activity['locationActivity'];
         $date = $activity['dateActivity'];
         $hourly = $activity['hourlyActivity'];
         $members = $activity['membersActivity'];
         $description = $activity['moreActivity'];
-        print_r($type);
-        print_r($location);
-        print_r($date);
-        print_r($hourly);
-        print_r($members);
-        print_r($description);
+        
 
         $activity = new Activity();
 

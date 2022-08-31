@@ -32,6 +32,21 @@ class Remember extends CoreModel
         return $remembersList;
     }
 
+    public function addRemember($location, $date, $members, $name)
+    {
+        $pdo = Database::getPDO();
+
+        $sql = "INSERT INTO `REMEMBER` (location, date, members, name) VALUES (:location, :date, :members, :name)";
+
+        $statement = $pdo->prepare($sql);
+
+        $statement->bindParam(':location', $location);
+        $statement->bindParam(':date', $date);
+        $statement->bindParam(':members', $members);
+        $statement->bindParam(':name', $name);
+
+        $statement->execute();
+    }
     //===================
     // Getters et Setters
     // ==================
