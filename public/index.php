@@ -92,6 +92,15 @@ $router->map(
 );
 $router->map(
     'POST',
+    '/Api/createShoppingListPost',
+    [
+        'action' => 'shoppingListPost',
+        'controller' => 'Api\ShoppingListController'
+    ],
+    'shoppingListCreationPost'
+);
+$router->map(
+    'POST',
     '/Api/createTribePost',
     [
         'action' => 'postTribeNamePost',

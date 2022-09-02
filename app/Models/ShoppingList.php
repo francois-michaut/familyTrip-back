@@ -29,6 +29,19 @@ class ShoppingList extends CoreModel
         return $shoppingListsList;
     }
 
+    public function addShoppingList($list)
+    {
+        $pdo = Database::getPDO();
+
+        $sql = "INSERT INTO `SHOPPINGLIST` (list) VALUES (:list)";
+
+        $statement = $pdo->prepare($sql);
+
+        $statement->bindParam(':list', $list);
+
+        $statement->execute();
+    }
+
 
     // ==================
     // Getters et Setters
