@@ -27,7 +27,8 @@ a {
 }
 .home {
     margin: 40px;
-    min-height: 450px ;
+    height: 34rem;
+    padding: 20px;
 }
 .home__title {
     text-align:center;
@@ -75,7 +76,7 @@ thead {
 }
 
 .shoppinglist, .remember, .user, .tribe, .activity  {
-    height: 550px;
+    height: 36rem;
     margin: 40px;
     text-align: center;
 }
