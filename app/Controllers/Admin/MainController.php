@@ -67,7 +67,7 @@ class MainController
     {
         $tribes = new Tribe();
 
-        $tribesList = $tribes->findAll();
+        $tribesList = $tribes->getFiveTribes();
 
         $param['tribesList'] = $tribesList;
 

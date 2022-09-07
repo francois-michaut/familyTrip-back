@@ -9,8 +9,8 @@
                 <tbody>
                  <?php foreach( $param['tribesList'] as $key => $tribe) { ?>
                     <tr class="first-row row">
-                        <th><?= $tribe['name'] ?></th>
-                        <th>Inconnus pour l'instant</th>
+                        <th><?= $tribe['tribe_name'] ?></th>
+                        <th><?= $tribe['firstname'].' ' .$tribe['lastname']?></th>
                     <?php }    ?>
                  </tr>
                 </tbody>
