@@ -20,7 +20,21 @@ class Tribe extends CoreModel
     {
         $pdo = Database::getPDO();
 
-        $sql = "SELECT * FROM `TRIBE` ORDER BY `name` LIMIT 5";
+        $sql = "SELECT * FROM `TRIBE` ORDER BY `name` ";
+
+        $statement = $pdo->query( $sql );
+
+        $tribeList = $statement->fetchAll( PDO::FETCH_ASSOC );
+
+        return $tribeList;
+    }
+    public function getFiveTribes()
+    {
+        $pdo = Database::getPDO();
+
+        $sql = "SELECT U.firstname, U.lastname, TR.name AS tribe_name
+        FROM USER U, TRIBE TR
+        WHERE U.tribe_id = TR.id ";
 
         $statement = $pdo->query( $sql );
 

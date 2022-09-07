@@ -14,7 +14,7 @@
                             <th><?= $remember['name']?></th>
                             <th><?= $remember['location']?></th>
                             <th><?= $remember['date']?></th>
-                            <th>Inconnu</th>
+                            <th><?= $remember['members']?></th>
                         </tr>
                    <?php } ?>
                 </tbody>
