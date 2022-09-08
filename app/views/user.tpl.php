@@ -6,6 +6,7 @@
                 <td>Nom</td>
                 <td>Prénom</td>
                 <td>Email</td>
+                <td>Tribu</td>
             </thead>
             <tbody>
             <?php foreach( $param['userList'] as $key => $user) { ?>
@@ -13,6 +14,7 @@
                         <th><?= $user['lastname'] ?></th>
                         <th><?= $user['firstname']?></th>
                         <th><?= $user['email']?></th>
+                        <th>Inconnue</th>
                    <?php } ?>
                 </tr>
             </tbody>
