@@ -18,5 +18,23 @@ class UserController
         echo json_encode($userList, JSON_UNESCAPED_UNICODE);
     }
 
+    public function userPost()
+   {
+    $data = file_get_contents('php://input');
+
+    $user = json_decode($data, true);
+
+    $pseudo = $user['pseudo'];
+    $email = $user['email'];
+    $password = $user['password'];
+
+    $user = new User();
+    
+    $user->addUser($pseudo, $email, $password);
+
+    return $user;
+
+   } 
+
     
 }

@@ -118,6 +118,15 @@ $router->map(
     'activityCreationPost'
 );
 $router->map(
+    'POST',
+    '/Api/userPost',
+    [
+        'action' => 'userPost',
+        'controller' => 'Api\UserController'
+    ],
+    'userCreationPost'
+);
+$router->map(
     'GET',
     '/Api/tribes',
     [
