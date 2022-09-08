@@ -24,9 +24,9 @@ class UserController
 
     $user = json_decode($data, true);
 
-    $pseudo = $user['pseudo'];
-    $email = $user['email'];
-    $password = $user['password'];
+    $pseudo = $user['userName'];
+    $email = $user['userEmail'];
+    $password = $user['userPassword'];
 
     $user = new User();
     
