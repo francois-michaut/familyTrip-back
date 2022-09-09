@@ -42,6 +42,10 @@ class MainController
 
         $this->show( 'activity', $param );
     }
+    public function activityEdit()
+    {
+        $this->show('activityEdit');
+    }
     public function shoppinglist()
     {
 

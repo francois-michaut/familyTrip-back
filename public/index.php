@@ -38,6 +38,15 @@ $router->map(
 );
 $router->map(
     'GET',
+    '/activity/Edit',
+    [
+        'action' => 'activityEdit',
+        'controller' => 'Admin\MainController'
+    ],
+    'activityEdit'
+);
+$router->map(
+    'GET',
     '/shoppinglist',
     [
         'action' => 'shoppinglist',

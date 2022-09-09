@@ -93,3 +93,28 @@ thead {
     border-collapse: collapse;
     border: 3px solid grey;
 }
+.activityEdit__title {
+    text-align: center;
+    margin: 50px;
+}
+ .activityEdit__section .input {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-bottom: 40px;
+    margin-right: 50px;
+ }
+ .activityEdit__section input {
+    padding: 6px;
+    margin-top: 6px;
+ }
+ .activityEdit__section--button {
+    text-align: center;
+    margin-bottom: 40px;
+ }
+ .activityEdit__section--button button {
+    padding: 10px;
+    color: aliceblue;
+    background-color: green;
+    border-radius: 20px;
+ }
