@@ -17,6 +17,7 @@ class Activity extends CoreModel
     private $type;
     private $description;
     private $hourly;
+    private $more;
 
     // ===============
     // Méthodes
@@ -52,7 +53,22 @@ class Activity extends CoreModel
         $statement->execute();
     }
 
-    // ===============
+    public function find($id)
+    {
+
+        $pdo = Database::getPDO();
+
+        $sql = "SELECT * FROM `ACTIVITY` WHERE `id`= " . $id ;
+
+        $statement = $pdo->query($sql);
+
+        $activityDetail = $statement->fetchObject(Activity::class);
+
+
+        return $activityDetail;
+    }
+
+    // =================
     // Getters et setters
     // =================
     
@@ -173,6 +189,25 @@ class Activity extends CoreModel
     public function setHourly($hourly)
     {
         $this->hourly = $hourly;
+
+        return $this;
+    }
+    /**
+     * Get the value of more
+     */ 
+    public function getMore()
+    {
+        return $this->more;
+    }
+
+    /**
+     * Set the value of more
+     *
+     * @return  self
+     */ 
+    public function setMore($more)
+    {
+        $this->more = $more;
 
         return $this;
     }

@@ -42,10 +42,17 @@ class MainController
 
         $this->show( 'activity', $param );
     }
-    public function activityEdit()
-    {
-        $this->show('activityEdit');
-    }
+    // public function activityEdit($id)
+    // {
+    //     $activity = new Activity();
+
+    //     $activityDetail = $activity->find($id);
+        
+    //     $param['activityDetail'] = $activityDetail;
+
+    //     $this->show('activityEdit', $param);
+    // }
+    
     public function shoppinglist()
     {
 
