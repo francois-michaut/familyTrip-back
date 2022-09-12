@@ -15,7 +15,9 @@
                 <?php foreach( $param['activitiesList'] as $key => $activity ) { ?>
                     <tr class="first-row row">
                         <th><?= $activity['type'] ?></th>
-                        <th><?= $activity['date'] ?></th>
+                        <th><?php $date = date_create($activity['date']);
+                                    echo date_format($date, 'd-m-Y')
+                        ?></th>
                         <th><?= $activity['location']?></th>
                         <th><?= $activity['hourly'] ?></th>
                         <th><?= $activity['more'] ?></th>

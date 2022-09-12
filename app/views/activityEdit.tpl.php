@@ -12,7 +12,10 @@
             <label for="activityDate">
                 Date de l'activité
             </label>
-            <input type="date" name="activityDate" value="<?= $param['activity']->getDate()?>" placeholder="<?= $param['activity']->getDate()?>">
+            <input type="text" name="activityDate" value="<?php
+                $date = date_create($param['activity']->getDate());
+                echo date_format($date, 'Y-m-d')
+                ?>" placeholder="<?=$param['activity']->getDate()?>">
         </div>
         <div class="input">
             <label for="activityLocation">
