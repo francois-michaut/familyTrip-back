@@ -47,4 +47,9 @@
             </tbody>
         </table>
     </div>
+    <button type="button" class="activity__add">
+        <a href="<?= $router->generate('activityAdd')?>">
+             Ajouter une activité
+        </a>
+    </button>
 </main>

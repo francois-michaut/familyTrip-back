@@ -73,5 +73,10 @@ class ActivityController extends CoreController
 
         $this->redirect('activity');
     }
+
+    public function activityAdd()
+    {
+        $this->show('activityAdd');
+    }
 }
 
