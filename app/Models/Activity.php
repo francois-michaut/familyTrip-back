@@ -68,6 +68,32 @@ class Activity extends CoreModel
         return $activityDetail;
     }
 
+    public function update()
+    {
+        $pdo = Database::getPDO();
+
+        $sql = "UPDATE `ACTIVITY` 
+                SET
+                   type = :activityType,
+                   date = :activityDate,
+                   location = :activityLocation,
+                   hourly = :activityHourly,
+                   more = :activityMore
+                WHERE id = :id
+                ";
+
+        $pdoStatement = $pdo->prepare($sql);
+
+        $pdoStatement->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $pdoStatement->bindValue(':activityType', $this->type, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':activityDate', $this->date);
+        $pdoStatement->bindValue(':activityLocation', $this->location, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':activityHourly', $this->hourly, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':activityMore', $this->more, PDO::PARAM_STR);
+
+        return $pdoStatement->execute();
+
+    }
     // =================
     // Getters et setters
     // =================

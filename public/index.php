@@ -46,6 +46,15 @@ $router->map(
     'activityEdit'
 );
 $router->map(
+    'POST',
+    '/activity/Edit/[i:id]',
+    [
+        'action' => 'activityUpdate',
+        'controller' => 'Admin\ActivityController'
+    ],
+    'activityUpdate'
+);
+$router->map(
     'GET',
     '/shoppinglist',
     [

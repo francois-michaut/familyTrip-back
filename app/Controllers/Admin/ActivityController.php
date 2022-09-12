@@ -4,24 +4,8 @@ namespace FamilyTrip\Controllers\Admin;
 
 use FamilyTrip\Models\Activity;
 
-class ActivityController
+class ActivityController extends CoreController
 {
-    public function show($viewName , $param =[])
-    {
-        global $router;
-
-        $param['currentPage'] = $viewName;
-
-        $param['assetsBaseUri'] = $_SERVER['BASE_URI'] . 'assets/';
-
-        $param['baseUri'] = $_SERVER['BASE_URI'];
-
-        extract($param);
-
-        require __DIR__ . '../../../views/header.tpl.php';
-        require __DIR__ . '../../../views/' . $viewName . '.tpl.php';
-        require __DIR__ . '../../../views/footer.tpl.php';
-    }
 
     public function activityEdit($id) 
     {
@@ -38,6 +22,31 @@ class ActivityController
 
         $this->show('activityEdit', $param);
 
+    }
+
+    public function activityUpdate($id)
+    {
+        $activityId = $id['id'];
+        // dump($activityId);
+        $activityType = filter_input(INPUT_POST, 'activityType');
+        $activityDate = filter_input(INPUT_POST, 'activityDate');
+        $activityLocation = filter_input(INPUT_POST, 'activityLocation');
+        $activityHourly = filter_input(INPUT_POST, 'activityHourly');
+        $activityMore = filter_input(INPUT_POST, 'activityMore');
+        $activity = new Activity;
+
+        $newActivity = $activity->find($activityId);
+
+        $newActivity->setType($activityType);
+        $newActivity->setDate($activityDate);
+        $newActivity->setLocation($activityLocation);
+        $newActivity->setHourly($activityHourly);
+        $newActivity->setMore($activityMore);
+
+        // dump($newActivity);
+        $newActivity->update();
+
+        $this->redirect('activity');
     }
 }
 

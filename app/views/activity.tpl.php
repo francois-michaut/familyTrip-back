@@ -1,5 +1,4 @@
 <main class="activity">
-    <?php dump(get_defined_vars()) ?>
     <h2 class="activity__title">Liste des différentes activités</h2>
     <div class="activity__table">
         <table>
