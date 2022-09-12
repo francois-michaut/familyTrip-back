@@ -8,25 +8,9 @@ use FamilyTrip\Models\Tribe;
 use FamilyTrip\Models\Remember;
 use FamilyTrip\Models\ShoppingList;
 
-class MainController
+class MainController extends CoreController
 {
     
-    public function show($viewName , $param =[])
-    {
-        global $router;
-
-        $param['currentPage'] = $viewName;
-
-        $param['assetsBaseUri'] = $_SERVER['BASE_URI'] . 'assets/';
-
-        $param['baseUri'] = $_SERVER['BASE_URI'];
-
-        extract($param);
-
-        require __DIR__ . '../../../views/header.tpl.php';
-        require __DIR__ . '../../../views/' . $viewName . '.tpl.php';
-        require __DIR__ . '../../../views/footer.tpl.php';
-    }
 
     public function home()
     {
@@ -41,10 +25,6 @@ class MainController
         $param['activitiesList'] = $activitiesList;
 
         $this->show( 'activity', $param );
-    }
-    public function activityEdit()
-    {
-        $this->show('activityEdit');
     }
     public function shoppinglist()
     {

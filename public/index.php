@@ -23,7 +23,7 @@ $router->map(
     '/',
     [
         'action' => 'home',
-    'controller' => 'Admin\MainController'
+        'controller' => 'Admin\MainController'
     ],
     'home'
 );
@@ -38,12 +38,21 @@ $router->map(
 );
 $router->map(
     'GET',
-    '/activity/Edit',
+    '/activity/Edit/[i:id]',
     [
         'action' => 'activityEdit',
-        'controller' => 'Admin\MainController'
+        'controller' => 'Admin\ActivityController'
     ],
     'activityEdit'
+);
+$router->map(
+    'POST',
+    '/activity/Edit/[i:id]',
+    [
+        'action' => 'activityUpdate',
+        'controller' => 'Admin\ActivityController'
+    ],
+    'activityUpdate'
 );
 $router->map(
     'GET',
@@ -158,5 +167,7 @@ if ( $match )
     $methodToUse = 'err404';
 }
 
+$params = $match['params'];
+
 $controller = new $controllerToUse();
-$controller->$methodToUse();
+$controller->$methodToUse($params);

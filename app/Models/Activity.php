@@ -17,6 +17,7 @@ class Activity extends CoreModel
     private $type;
     private $description;
     private $hourly;
+    private $more;
 
     // ===============
     // Méthodes
@@ -52,7 +53,48 @@ class Activity extends CoreModel
         $statement->execute();
     }
 
-    // ===============
+    public function find($id)
+    {
+
+        $pdo = Database::getPDO();
+
+        $sql = "SELECT * FROM `ACTIVITY` WHERE `id`= " . $id ;
+
+        $statement = $pdo->query($sql);
+
+        $activityDetail = $statement->fetchObject(Activity::class);
+
+
+        return $activityDetail;
+    }
+
+    public function update()
+    {
+        $pdo = Database::getPDO();
+
+        $sql = "UPDATE `ACTIVITY` 
+                SET
+                   type = :activityType,
+                   date = :activityDate,
+                   location = :activityLocation,
+                   hourly = :activityHourly,
+                   more = :activityMore
+                WHERE id = :id
+                ";
+
+        $pdoStatement = $pdo->prepare($sql);
+
+        $pdoStatement->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $pdoStatement->bindValue(':activityType', $this->type, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':activityDate', $this->date);
+        $pdoStatement->bindValue(':activityLocation', $this->location, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':activityHourly', $this->hourly, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':activityMore', $this->more, PDO::PARAM_STR);
+
+        return $pdoStatement->execute();
+
+    }
+    // =================
     // Getters et setters
     // =================
     
@@ -173,6 +215,25 @@ class Activity extends CoreModel
     public function setHourly($hourly)
     {
         $this->hourly = $hourly;
+
+        return $this;
+    }
+    /**
+     * Get the value of more
+     */ 
+    public function getMore()
+    {
+        return $this->more;
+    }
+
+    /**
+     * Set the value of more
+     *
+     * @return  self
+     */ 
+    public function setMore($more)
+    {
+        $this->more = $more;
 
         return $this;
     }
