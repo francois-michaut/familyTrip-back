@@ -56,6 +56,24 @@ $router->map(
 );
 $router->map(
     'GET',
+    '/activity/Delete/[i:id]',
+    [
+        'action' => 'activityDeletePage',
+        'controller' => 'Admin\ActivityController'
+    ],
+    'activityDelete'
+);
+$router->map(
+    'POST',
+    '/activity/Delete/[i:id]',
+    [
+        'action' => 'activityDelete',
+        'controller' => 'Admin\ActivityController'
+    ],
+    'activityWasDelete'
+);
+$router->map(
+    'GET',
     '/shoppinglist',
     [
         'action' => 'shoppinglist',

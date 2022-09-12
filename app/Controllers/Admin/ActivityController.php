@@ -24,6 +24,30 @@ class ActivityController extends CoreController
 
     }
 
+    public function activityDeletePage($id)
+    {
+        $activityId = $id['id'];
+
+        $activity = new Activity;
+
+        $activityObject = $activity->find($activityId);
+
+        $param = ['activity' => $activityObject ];
+
+        $this->show('activityDelete', $param);
+    }
+
+    public function activityDelete($id)
+    {
+        $activityId = $id['id'];
+
+        $activity = new Activity;
+
+        $activity->delete($activityId);
+
+        $this->redirect('activity');
+    }
+
     public function activityUpdate($id)
     {
         $activityId = $id['id'];
@@ -33,6 +57,7 @@ class ActivityController extends CoreController
         $activityLocation = filter_input(INPUT_POST, 'activityLocation');
         $activityHourly = filter_input(INPUT_POST, 'activityHourly');
         $activityMore = filter_input(INPUT_POST, 'activityMore');
+
         $activity = new Activity;
 
         $newActivity = $activity->find($activityId);
