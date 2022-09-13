@@ -27,6 +27,7 @@ $router->map(
     ],
     'home'
 );
+// Routes des activités
 $router->map(
     'GET',
     '/activity',
@@ -35,6 +36,24 @@ $router->map(
         'controller' => 'Admin\MainController'
     ],
     'activity'
+);
+$router->map(
+    'GET',
+    '/activity/Add',
+    [
+        'action' => 'activityAdd',
+        'controller' => 'Admin\ActivityController'
+    ],
+    'activityAdd'
+);
+$router->map(
+    'POST',
+    '/activity/Add',
+    [
+        'action' => 'activityAddBdd',
+        'controller' => 'Admin\ActivityController'
+    ],
+    'activityAddBdd'
 );
 $router->map(
     'GET',
@@ -72,6 +91,8 @@ $router->map(
     ],
     'activityWasDelete'
 );
+
+// Routes des shoppinglist
 $router->map(
     'GET',
     '/shoppinglist',
@@ -81,6 +102,8 @@ $router->map(
     ],
     'shoppinglist'
 );
+
+// Routes des Remembers
 $router->map(
     'GET',
     '/remember',
@@ -90,6 +113,8 @@ $router->map(
     ],
     'remember'
 );
+
+// Routes des Tribes
 $router->map(
     'GET',
     '/tribe',
@@ -99,6 +124,8 @@ $router->map(
     ],
     'tribe'
 );
+
+// Routes des Users
 $router->map(
     'GET',
     '/user',
@@ -108,6 +135,8 @@ $router->map(
     ],
     'user'
 );
+
+// Routes de l'API
 $router->map(
     'GET',
     '/Api/members',

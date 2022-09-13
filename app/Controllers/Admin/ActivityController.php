@@ -73,5 +73,26 @@ class ActivityController extends CoreController
 
         $this->redirect('activity');
     }
+
+    public function activityAdd()
+    {
+        $this->show('activityAdd');
+    }
+
+    public function activityAddBdd()
+    {
+        $activityType = filter_input(INPUT_POST, 'activityType');
+        $activityLocation = filter_input(INPUT_POST, 'activityLocation');
+        $activityDate = filter_input(INPUT_POST, 'activityDate');
+        $activityHourly = filter_input(INPUT_POST, 'activityHourly');
+        $activityMembers = filter_input(INPUT_POST, 'activityMembers');
+        $activityDescription = filter_input(INPUT_POST, 'activityDescription');
+
+        $newActivity = new Activity;
+
+        $newActivity->addActivity($activityType, $activityLocation, $activityDate, $activityHourly, $activityMembers, $activityDescription);
+
+        $this->redirect('activity');
+    }
 }
 
