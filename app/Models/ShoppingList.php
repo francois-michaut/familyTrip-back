@@ -42,6 +42,19 @@ class ShoppingList extends CoreModel
         $statement->execute();
     }
 
+    public function find($id)
+    {
+        $pdo = Database::getPDO();
+
+        $sql = "SELECT * FROM `SHOPPINGLIST` WHERE `id` = $id";
+
+        $statement = $pdo->query($sql);
+
+        $shoppinglistDetail = $statement->fetchObject(Shoppinglist::class);
+
+        return $shoppinglistDetail;
+    }
+
 
     // ==================
     // Getters et Setters

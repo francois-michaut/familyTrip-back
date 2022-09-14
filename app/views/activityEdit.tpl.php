@@ -1,4 +1,5 @@
-    <h2 class="activityEdit__title">
+<main>
+   <h2 class="activityEdit__title">
         Modifier cette activité
     </h2>
     <form class="activityEdit__form" action="" method="POST">
