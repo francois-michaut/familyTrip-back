@@ -37,4 +37,17 @@ class ShoppingListController extends CoreController
 
         $this->redirect('shoppinglist');
     }
+
+    public function shoppinglistDelete($id)
+    {
+        $currentId = $id['id'];
+
+        $currentShoppingList = new ShoppingList;
+
+        $currentShoppingList = $currentShoppingList->find($currentId);
+
+        $param = ['shoppingList' => $currentShoppingList];
+
+        $this->show('shoppingListDelete', $param );
+    }
 }
