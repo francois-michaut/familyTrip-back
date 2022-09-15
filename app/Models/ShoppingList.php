@@ -76,6 +76,17 @@ class ShoppingList extends CoreModel
         return $pdoStatement->execute();
     }
 
+    public function delete($id)
+    {
+        $pdo = Database::getPDO();
+
+        $sql = "DELETE FROM `SHOPPINGLIST` WHERE `id` = $id";
+
+        $pdoStatement = $pdo->prepare($sql);
+
+        return $pdoStatement->execute();
+    }
+
 
     // ==================
     // Getters et Setters

@@ -120,6 +120,24 @@ $router->map(
     ],
     'shoppinglistEditUpdate'
 );
+$router->map(
+    'GET',
+    '/shoppinglist/Delete/[i:id]',
+    [
+        'action' => 'shoppinglistDeletePage',
+        'controller' => 'Admin\ShoppingListController'
+    ],
+    'shoppinglistDeletePage'
+);
+$router->map(
+    'POST',
+    '/shoppinglist/Delete/[i:id]',
+    [
+        'action' => 'shoppinglistDelete',
+        'controller' => 'Admin\ShoppingListController'
+    ],
+    'shoppinglistDelete'
+);
 
 // Routes des Remembers
 $router->map(
