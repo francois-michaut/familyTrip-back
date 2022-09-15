@@ -111,6 +111,15 @@ $router->map(
     ],
     'shoppinglistEdit'
 );
+$router->map(
+    'POST',
+    '/shoppinglist/Edit/[i:id]',
+    [
+        'action' => 'shoppinglistUpdate',
+        'controller' => 'Admin\ShoppingListController'
+    ],
+    'shoppinglistEditUpdate'
+);
 
 // Routes des Remembers
 $router->map(
