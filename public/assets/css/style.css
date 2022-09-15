@@ -93,26 +93,26 @@ thead {
     border-collapse: collapse;
     border: 3px solid grey;
 }
-.activityEdit__title, .activityDelete__title, .activityAdd__title {
+.activityEdit__title, .activityDelete__title, .activityAdd__title, .shoppingListEdit__title {
     text-align: center;
     margin: 50px;
 }
- .activityEdit__form .input, .activityDelete__form .input, .activityAdd__input {
+ .activityEdit__form .input, .activityDelete__form .input, .activityAdd__input, .shoppingListEdit__form .input {
     display: flex;
     flex-direction: column;
     margin-left: 50px;
     margin-bottom: 40px;
     margin-right: 50px;
  }
- .activityEdit__form input, .activityDelete__form input, .activityAdd__form input {
+ .activityEdit__form input, .activityDelete__form input, .activityAdd__form input, .shoppingListEdit__form input {
     padding: 6px;
     margin-top: 6px;
  }
- .activityEdit__form--button, .activityDelete__form--button, .activityAdd__form--button  {
+ .activityEdit__form--button, .activityDelete__form--button, .activityAdd__form--button, .shoppingListEdit__form--button  {
     text-align: center;
     margin-bottom: 40px;
  }
- .activityEdit__form--button button, .activityAdd__form button {
+ .activityEdit__form--button button, .activityAdd__form button, .shoppingListEdit__form button {
     padding: 12px;
     color: aliceblue;
     background-color: green;
@@ -132,4 +132,7 @@ thead {
 }
 .activity__add a {
     color: white;
+}
+.shoppingListEdit {
+    height: 560px;
 }

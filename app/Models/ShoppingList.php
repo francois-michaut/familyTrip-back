@@ -12,6 +12,7 @@ class ShoppingList extends CoreModel
     // Propriétés
     // ===========
     private $list;
+    private $tribeId;
 
     // ==============
     // Méthodes
@@ -42,6 +43,39 @@ class ShoppingList extends CoreModel
         $statement->execute();
     }
 
+    public function find($id)
+    {
+        $pdo = Database::getPDO();
+
+        $sql = "SELECT * FROM `SHOPPINGLIST` WHERE `id` = " . $id;
+
+        $statement = $pdo->query($sql);
+
+        $shoppinglistDetail = $statement->fetchObject(Shoppinglist::class);
+
+        return $shoppinglistDetail;
+    }
+
+    public function update()
+    {
+        $pdo = Database::getPDO();
+
+        $sql = "UPDATE `SHOPPINGLIST`
+                SET
+                   list = :list,
+                   tribeId = :tribeId
+                WHERE id = :id 
+                ";
+
+        $pdoStatement = $pdo->prepare($sql);
+
+        $pdoStatement->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $pdoStatement->bindValue(':list', $this->list, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':tribeId', $this->tribeId, PDO::PARAM_STR);
+
+        return $pdoStatement->execute();
+    }
+
 
     // ==================
     // Getters et Setters
@@ -63,6 +97,27 @@ class ShoppingList extends CoreModel
     public function setList($list)
     {
         $this->list = $list;
+
+        return $this;
+    }
+    
+
+    /**
+     * Get the value of tribeId
+     */ 
+    public function getTribeId()
+    {
+        return $this->tribeId;
+    }
+
+    /**
+     * Set the value of tribeId
+     *
+     * @return  self
+     */ 
+    public function setTribeId($tribeId)
+    {
+        $this->tribeId = $tribeId;
 
         return $this;
     }
