@@ -63,7 +63,7 @@ class ShoppingList extends CoreModel
         $sql = "UPDATE `SHOPPINGLIST`
                 SET
                    list = :list,
-                   tribeId = :tribeId
+                   tribe_Id = :tribeId
                 WHERE id = :id 
                 ";
 
@@ -71,7 +71,7 @@ class ShoppingList extends CoreModel
 
         $pdoStatement->bindValue(':id', $this->id, PDO::PARAM_INT);
         $pdoStatement->bindValue(':list', $this->list, PDO::PARAM_STR);
-        $pdoStatement->bindValue(':tribeId', $this->tribeId, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':tribeId', $this->tribeId, PDO::PARAM_INT);
 
         return $pdoStatement->execute();
     }
