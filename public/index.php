@@ -138,6 +138,25 @@ $router->map(
     ],
     'shoppinglistDelete'
 );
+$router->map(
+    'GET',
+    '/shoppinglist/Add',
+    [
+        'action' => 'shoppinglistAddPage',
+        'controller' => 'Admin\ShoppingListController'
+    ],
+    'shoppingListAdd'
+);
+
+$router->map(
+    'POST',
+    '/shoppinglist/Add',
+    [
+        'action' => 'shoppinglistAddPageToBdd',
+        'controller' => 'Admin\ShoppingListController'
+    ],
+    'shoppingListAddBdd'
+);
 
 // Routes des Remembers
 $router->map(

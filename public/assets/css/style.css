@@ -75,7 +75,7 @@ thead {
     color: white;
 }
 
-.shoppinglist, .remember, .user, .tribe, .activity  {
+.shoppinglist, .remember, .user, .tribe, .activity, .shoppingListAdd  {
     height: 36rem;
     margin: 40px;
     text-align: center;
@@ -93,11 +93,11 @@ thead {
     border-collapse: collapse;
     border: 3px solid grey;
 }
-.activityEdit__title, .activityDelete__title, .activityAdd__title, .shoppingListEdit__title, .shoppingListDelete__title {
+.activityEdit__title, .activityDelete__title, .activityAdd__title, .shoppingListEdit__title, .shoppingListDelete__title, .shoppingListAdd__title {
     text-align: center;
     margin: 50px;
 }
- .activityEdit__form .input, .activityDelete__form .input, .activityAdd__input, .shoppingListEdit__form .input, .shoppingListDelete__form .input  {
+ .activityEdit__form .input, .activityDelete__form .input, .activityAdd__input, .shoppingListEdit__form .input, .shoppingListDelete__form .input, .shoppingListAdd__input  {
     display: flex;
     flex-direction: column;
     margin-left: 50px;
@@ -108,11 +108,11 @@ thead {
     padding: 6px;
     margin-top: 6px;
  }
- .activityEdit__form--button, .activityDelete__form--button, .activityAdd__form--button, .shoppingListEdit__form--button, .shoppingListDelete__form--button  {
+ .activityEdit__form--button, .activityDelete__form--button, .activityAdd__form--button, .shoppingListEdit__form--button, .shoppingListDelete__form--button, .shoppingListAdd__form--button  {
     text-align: center;
     margin-bottom: 40px;
  }
- .activityEdit__form--button button, .activityAdd__form button, .shoppingListEdit__form button{
+ .activityEdit__form--button button, .activityAdd__form button, .shoppingListEdit__form button, .shoppingListAdd__form button{
     padding: 12px;
     color: aliceblue;
     background-color: green;
@@ -124,13 +124,13 @@ thead {
     background-color: red;
     border-radius: 20px;
  }
-.activity__add {
+.activity__add, .shoppingList__add {
     margin: 40px;
     padding: 12px;
     background-color: rgb(107, 160, 55);
     border-radius: 20px;
 }
-.activity__add a {
+.activity__add a, .shoppingList__add a {
     color: white;
 }
 .shoppingListEdit, .shoppingListDelete {
