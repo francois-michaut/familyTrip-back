@@ -17,7 +17,30 @@ class RememberController extends CoreController
     $param =['remember' => $currentRemember] ;
 
     $this->show('rememberEdit', $param );
-    
+
    } 
+
+   public function rememberUpdate($id)
+  {
+    $currentId = $id['id'] ;
+
+    $rememberName = filter_input(INPUT_POST, 'name');
+    $rememberLocation = filter_input(INPUT_POST, 'location');
+    $rememberDate = filter_input(INPUT_POST, 'date');
+    $rememberMembers = filter_input(INPUT_POST, 'members');
+
+    $remember = new Remember;
+
+    $currentRemember = $remember->find($currentId);
+
+    $currentRemember->setName($rememberName);
+    $currentRemember->setLocation($rememberLocation);
+    $currentRemember->setDate($rememberDate);
+    $currentRemember->setMembers($rememberMembers);
+
+    $currentRemember->update();
+
+    $this->redirect('remember');
+  } 
 }
 

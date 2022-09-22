@@ -178,6 +178,15 @@ $router->map(
     ],
     'rememberEdit'
 );
+$router->map(
+    'POST',
+    '/remember/Edit/[i:id]',
+    [
+        'action' => 'rememberUpdate',
+        'controller' => 'Admin\RememberController'
+    ],
+    'rememberUpdate'
+);
 
 $router->map(
     'GET',

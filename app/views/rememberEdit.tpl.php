@@ -24,7 +24,7 @@
                 name="date"
                 id="date"
                 value="<?php $date = date_create($param['remember']->getDate());
-                echo date_format($date, 'd-m-Y')
+                echo date_format($date, 'Y-m-d')
                  ?>"
                  placeholder="<?= $param['remember']->getDate() ?>">
         </div>
