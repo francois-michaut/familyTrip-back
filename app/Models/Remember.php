@@ -32,6 +32,19 @@ class Remember extends CoreModel
         return $remembersList;
     }
 
+    public function find($id)
+   {
+        $pdo = Database::getPDO();
+
+        $sql = "SELECT * FROM `REMEMBER` WHERE `id` = " . $id ;
+
+        $statement = $pdo->query($sql);
+
+        $rememberDetail = $statement->fetchObject(Remember::class);
+
+        return $rememberDetail;
+   } 
+
     public function addRemember($location, $date, $members, $name)
     {
         $pdo = Database::getPDO();

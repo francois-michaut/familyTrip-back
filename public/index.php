@@ -169,6 +169,25 @@ $router->map(
     'remember'
 );
 
+$router->map(
+    'GET',
+    '/remember/Edit/[i:id]',
+    [
+        'action' => 'rememberEditPage',
+        'controller' => 'Admin\RememberController'
+    ],
+    'rememberEdit'
+);
+
+$router->map(
+    'GET',
+    '/remember/Delete/[i:id]',
+    [
+        'action' => 'rememberUpdate',
+        'controller' => 'Admin\RememberController'
+    ],
+    'rememberDelete'
+);
 // Routes des Tribes
 $router->map(
     'GET',
