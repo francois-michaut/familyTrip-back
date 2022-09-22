@@ -61,4 +61,9 @@ class ShoppingListController extends CoreController
 
         $this->redirect('shoppinglist');
     }
+
+    public function shoppinglistAddPage()
+   {
+    $this->show('shoppingListAddPage');
+   } 
 }
