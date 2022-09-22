@@ -66,4 +66,16 @@ class ShoppingListController extends CoreController
    {
     $this->show('shoppingListAddPage');
    } 
+
+   public function shoppinglistAddPageToBdd()
+  {
+    $shoppingListList = filter_input(INPUT_POST, 'list');
+    $shoppingListTribeId = filter_input(INPUT_POST, 'id');
+
+    $newShoppingList = new ShoppingList;
+
+    $newShoppingList->addShoppingList($shoppingListList);
+
+    $this->redirect('shoppinglist');
+  } 
 }

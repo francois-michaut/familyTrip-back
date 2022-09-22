@@ -148,6 +148,16 @@ $router->map(
     'shoppingListAdd'
 );
 
+$router->map(
+    'POST',
+    '/shoppinglist/Add',
+    [
+        'action' => 'shoppinglistAddPageToBdd',
+        'controller' => 'Admin\ShoppingListController'
+    ],
+    'shoppingListAddBdd'
+);
+
 // Routes des Remembers
 $router->map(
     'GET',
