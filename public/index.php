@@ -197,6 +197,15 @@ $router->map(
     ],
     'rememberDelete'
 );
+$router->map(
+    'POST',
+    '/remember/Delete/[i:id]',
+    [
+        'action' => 'rememberDelete',
+        'controller' => 'Admin\RememberController'
+    ],
+    'rememberDeleteBdd'
+);
 // Routes des Tribes
 $router->map(
     'GET',

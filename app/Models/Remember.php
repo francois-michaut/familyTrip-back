@@ -84,6 +84,17 @@ class Remember extends CoreModel
 
     return $statement->execute();
    } 
+
+   public function delete($id)
+  {
+    $pdo = Database::getPDO();
+
+    $sql = "DELETE FROM `REMEMBER` WHERE `id` = $id";
+
+    $pdoStatement = $pdo->prepare($sql);
+
+    return $pdoStatement->execute();
+  } 
     //===================
     // Getters et Setters
     // ==================

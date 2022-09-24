@@ -55,5 +55,16 @@ class RememberController extends CoreController
 
     $this->show('rememberDelete', $param );
  } 
+
+ public function rememberDelete($id)
+{
+  $currentId = $id['id'];
+
+  $remember = new Remember;
+
+  $currentRemember = $remember->delete($currentId);
+
+  $this->redirect('remember');
+} 
 }
 
