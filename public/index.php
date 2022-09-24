@@ -206,6 +206,24 @@ $router->map(
     ],
     'rememberDeleteBdd'
 );
+$router->map(
+    'GET',
+    '/remember/Add',
+    [
+        'action' => 'rememberAddPage',
+        'controller' => 'Admin\RememberController'
+    ],
+    'rememberAddPage'
+);
+$router->map(
+    'POST',
+    '/remember/Add',
+    [
+        'action' => 'rememberAddBdd',
+        'controller' => 'Admin\RememberController'
+    ],
+    'rememberAddBdd'
+);
 // Routes des Tribes
 $router->map(
     'GET',

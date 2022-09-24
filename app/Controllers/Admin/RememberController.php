@@ -66,5 +66,27 @@ class RememberController extends CoreController
 
   $this->redirect('remember');
 } 
+
+public function rememberAddPage()
+{
+  $this->show('rememberAdd');
+}
+
+public function rememberAddBdd() 
+{
+  $rememberName = filter_input(INPUT_POST, 'name');
+  $rememberLocation = filter_input(INPUT_POST, 'location');
+  $rememberDate = filter_input(INPUT_POST, 'date');
+  $rememberMembers = filter_input(INPUT_POST, 'members');
+
+  $newRemember = new Remember;
+
+  $newRemember->addRemember($rememberLocation, $rememberDate, $rememberMembers, $rememberName);
+
+  $this->redirect('remember');
+}
+
+
+
 }
 

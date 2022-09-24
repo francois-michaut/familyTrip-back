@@ -44,4 +44,9 @@
                 </tbody>
         </table>
     </div>
+    <button type="button" class="remember__add">
+        <a href="<?= $router->generate('rememberAddPage')?>">
+             Ajouter un souvenir
+        </a>
+    </button>
 </main>
