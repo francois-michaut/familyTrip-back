@@ -169,6 +169,61 @@ $router->map(
     'remember'
 );
 
+$router->map(
+    'GET',
+    '/remember/Edit/[i:id]',
+    [
+        'action' => 'rememberEditPage',
+        'controller' => 'Admin\RememberController'
+    ],
+    'rememberEdit'
+);
+$router->map(
+    'POST',
+    '/remember/Edit/[i:id]',
+    [
+        'action' => 'rememberUpdate',
+        'controller' => 'Admin\RememberController'
+    ],
+    'rememberUpdate'
+);
+
+$router->map(
+    'GET',
+    '/remember/Delete/[i:id]',
+    [
+        'action' => 'rememberDeletePage',
+        'controller' => 'Admin\RememberController'
+    ],
+    'rememberDelete'
+);
+$router->map(
+    'POST',
+    '/remember/Delete/[i:id]',
+    [
+        'action' => 'rememberDelete',
+        'controller' => 'Admin\RememberController'
+    ],
+    'rememberDeleteBdd'
+);
+$router->map(
+    'GET',
+    '/remember/Add',
+    [
+        'action' => 'rememberAddPage',
+        'controller' => 'Admin\RememberController'
+    ],
+    'rememberAddPage'
+);
+$router->map(
+    'POST',
+    '/remember/Add',
+    [
+        'action' => 'rememberAddBdd',
+        'controller' => 'Admin\RememberController'
+    ],
+    'rememberAddBdd'
+);
 // Routes des Tribes
 $router->map(
     'GET',

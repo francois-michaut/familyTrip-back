@@ -32,6 +32,19 @@ class Remember extends CoreModel
         return $remembersList;
     }
 
+    public function find($id)
+   {
+        $pdo = Database::getPDO();
+
+        $sql = "SELECT * FROM `REMEMBER` WHERE `id` = " . $id ;
+
+        $statement = $pdo->query($sql);
+
+        $rememberDetail = $statement->fetchObject(Remember::class);
+
+        return $rememberDetail;
+   } 
+
     public function addRemember($location, $date, $members, $name)
     {
         $pdo = Database::getPDO();
@@ -47,6 +60,41 @@ class Remember extends CoreModel
 
         $statement->execute();
     }
+
+    public function update()
+   {
+    $pdo = Database::getPDO();
+
+    $sql = "UPDATE `REMEMBER`
+            SET 
+                name = :name,
+                location = :location,
+                 date = :date,
+                 members = :members
+                 WHERE id = :id
+            ";
+
+    $statement = $pdo->prepare($sql);
+
+    $statement->bindValue(':name', $this->name, PDO::PARAM_STR);
+    $statement->bindValue(':location', $this->location, PDO::PARAM_STR);
+    $statement->bindValue(':date', $this->date, PDO::PARAM_STR);
+    $statement->bindValue(':members', $this->members, PDO::PARAM_STR);
+    $statement->bindValue(':id', $this->id, PDO::PARAM_STR);
+
+    return $statement->execute();
+   } 
+
+   public function delete($id)
+  {
+    $pdo = Database::getPDO();
+
+    $sql = "DELETE FROM `REMEMBER` WHERE `id` = $id";
+
+    $pdoStatement = $pdo->prepare($sql);
+
+    return $pdoStatement->execute();
+  } 
     //===================
     // Getters et Setters
     // ==================
