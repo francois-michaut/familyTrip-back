@@ -192,7 +192,7 @@ $router->map(
     'GET',
     '/remember/Delete/[i:id]',
     [
-        'action' => 'rememberUpdate',
+        'action' => 'rememberDeletePage',
         'controller' => 'Admin\RememberController'
     ],
     'rememberDelete'
