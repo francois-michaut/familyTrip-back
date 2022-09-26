@@ -32,9 +32,9 @@ class Tribe extends CoreModel
     {
         $pdo = Database::getPDO();
 
-        $sql = "SELECT U.firstname, U.lastname, TR.id, TR.name AS tribe_name
-        FROM USER U, TRIBE TR
-        WHERE U.tribe_id = TR.id ";
+        $sql = "SELECT * FROM `TRIBE` 
+                LIMIT 5
+        ";
 
         $statement = $pdo->query( $sql );
 
@@ -90,7 +90,19 @@ class Tribe extends CoreModel
         $pdoStatement->bindValue(':id', $this->id, PDO::PARAM_STR);
 
         return $pdoStatement->execute();
-   } 
+   }
+   
+   public function delete($id)
+  {
+    $pdo = Database::getPDO();
+
+    $sql = "DELETE  FROM `TRIBE` WHERE `id` = $id ";
+
+    $pdoStatement = $pdo->prepare($sql);
+    
+    return $pdoStatement->execute();
+
+  } 
     
     // ==================
     // Getters et Setters

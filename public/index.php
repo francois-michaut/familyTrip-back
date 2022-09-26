@@ -253,6 +253,26 @@ $router->map(
     'tribeEditUpdate'
 );
 
+$router->map(
+    'GET',
+    '/tribe/Delete/[i:id]',
+    [
+        'action' => 'tribeDelete',
+        'controller' => 'Admin\TribeController'
+    ],
+    'tribeDelete'
+);
+
+$router->map(
+    'POST',
+    '/tribe/Delete/[i:id]',
+    [
+        'action' => 'tribeDeleteInBdd',
+        'controller' => 'Admin\TribeController'
+    ],
+    'tribeDeleteBdd'
+);
+
 // Routes des Users
 $router->map(
     'GET',

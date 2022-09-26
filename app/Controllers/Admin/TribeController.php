@@ -36,4 +36,28 @@ class TribeController extends CoreController
 
     $this->redirect('tribe');
   } 
+
+  public function tribeDelete($id)
+ {
+    $currentId = $id['id'];
+
+    $tribe = new Tribe;
+
+    $currentTribe = $tribe->find($currentId);
+
+    $param =['tribe' => $currentTribe] ;
+
+    $this->show('tribeDelete', $param);
+ } 
+
+ public function tribeDeleteInBdd($id)
+{
+    $currentId = $id['id'] ;
+
+    $tribe = new Tribe;
+
+    $currentTribe = $tribe->delete($currentId);
+
+    $this->redirect('tribe');
+} 
 } 
