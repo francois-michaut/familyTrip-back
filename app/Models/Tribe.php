@@ -73,6 +73,24 @@ class Tribe extends CoreModel
 
         return $response;
     }
+
+    public function update()
+   {
+        $pdo = Database::getPDO();
+
+        $sql = "UPDATE `TRIBE`
+                SET
+                    name = :name
+                    WHERE id = :id
+                ";
+        
+        $pdoStatement = $pdo->prepare($sql);
+
+        $pdoStatement->bindValue(':name', $this->name, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':id', $this->id, PDO::PARAM_STR);
+
+        return $pdoStatement->execute();
+   } 
     
     // ==================
     // Getters et Setters

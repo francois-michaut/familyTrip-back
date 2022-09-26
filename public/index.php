@@ -243,6 +243,15 @@ $router->map(
     ],
     'tribeEdit'
 );
+$router->map(
+    'POST',
+    '/tribe/Edit/[i:id]',
+    [
+        'action' => 'tribeUpdate',
+        'controller' => 'Admin\TribeController'
+    ],
+    'tribeEditUpdate'
+);
 
 // Routes des Users
 $router->map(
