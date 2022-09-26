@@ -32,7 +32,7 @@ class Tribe extends CoreModel
     {
         $pdo = Database::getPDO();
 
-        $sql = "SELECT U.firstname, U.lastname, TR.name AS tribe_name
+        $sql = "SELECT U.firstname, U.lastname, TR.id, TR.name AS tribe_name
         FROM USER U, TRIBE TR
         WHERE U.tribe_id = TR.id ";
 
@@ -42,6 +42,20 @@ class Tribe extends CoreModel
 
         return $tribeList;
     }
+
+    public function find($id)
+   {
+    $pdo = Database::getPDO();
+
+    $sql = "SELECT * FROM `TRIBE` WHERE `id` = $id ";
+
+    $pdoStatement = $pdo->query($sql);
+
+    $tribeDetail = $pdoStatement->fetchObject(Tribe::class);
+
+    return $tribeDetail;
+
+   } 
 
     public function addTribe($tribeName)
     {

@@ -234,6 +234,15 @@ $router->map(
     ],
     'tribe'
 );
+$router->map(
+    'GET',
+    '/tribe/Edit/[i:id]',
+    [
+        'action' => 'tribeEdit',
+        'controller' => 'Admin\TribeController'
+    ],
+    'tribeEdit'
+);
 
 // Routes des Users
 $router->map(
