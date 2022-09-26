@@ -32,9 +32,9 @@ class Tribe extends CoreModel
     {
         $pdo = Database::getPDO();
 
-        $sql = "SELECT U.firstname, U.lastname, TR.name AS tribe_name
-        FROM USER U, TRIBE TR
-        WHERE U.tribe_id = TR.id ";
+        $sql = "SELECT * FROM `TRIBE` 
+                LIMIT 5
+        ";
 
         $statement = $pdo->query( $sql );
 
@@ -42,6 +42,20 @@ class Tribe extends CoreModel
 
         return $tribeList;
     }
+
+    public function find($id)
+   {
+    $pdo = Database::getPDO();
+
+    $sql = "SELECT * FROM `TRIBE` WHERE `id` = $id ";
+
+    $pdoStatement = $pdo->query($sql);
+
+    $tribeDetail = $pdoStatement->fetchObject(Tribe::class);
+
+    return $tribeDetail;
+
+   } 
 
     public function addTribe($tribeName)
     {
@@ -59,6 +73,36 @@ class Tribe extends CoreModel
 
         return $response;
     }
+
+    public function update()
+   {
+        $pdo = Database::getPDO();
+
+        $sql = "UPDATE `TRIBE`
+                SET
+                    name = :name
+                    WHERE id = :id
+                ";
+        
+        $pdoStatement = $pdo->prepare($sql);
+
+        $pdoStatement->bindValue(':name', $this->name, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':id', $this->id, PDO::PARAM_STR);
+
+        return $pdoStatement->execute();
+   }
+   
+   public function delete($id)
+  {
+    $pdo = Database::getPDO();
+
+    $sql = "DELETE  FROM `TRIBE` WHERE `id` = $id ";
+
+    $pdoStatement = $pdo->prepare($sql);
+    
+    return $pdoStatement->execute();
+
+  } 
     
     // ==================
     // Getters et Setters

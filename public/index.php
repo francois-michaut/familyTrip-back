@@ -234,6 +234,64 @@ $router->map(
     ],
     'tribe'
 );
+$router->map(
+    'GET',
+    '/tribe/Edit/[i:id]',
+    [
+        'action' => 'tribeEdit',
+        'controller' => 'Admin\TribeController'
+    ],
+    'tribeEdit'
+);
+$router->map(
+    'POST',
+    '/tribe/Edit/[i:id]',
+    [
+        'action' => 'tribeUpdate',
+        'controller' => 'Admin\TribeController'
+    ],
+    'tribeEditUpdate'
+);
+
+$router->map(
+    'GET',
+    '/tribe/Delete/[i:id]',
+    [
+        'action' => 'tribeDelete',
+        'controller' => 'Admin\TribeController'
+    ],
+    'tribeDelete'
+);
+
+$router->map(
+    'POST',
+    '/tribe/Delete/[i:id]',
+    [
+        'action' => 'tribeDeleteInBdd',
+        'controller' => 'Admin\TribeController'
+    ],
+    'tribeDeleteBdd'
+);
+
+$router->map(
+    'GET',
+    '/tribe/Add',
+    [
+        'action' => 'tribeAddPage',
+        'controller' => 'Admin\TribeController'
+    ],
+    'tribeAddPage'
+);
+
+$router->map(
+    'POST',
+    '/tribe/Add',
+    [
+        'action' => 'tribeAddBdd',
+        'controller' => 'Admin\TribeController'
+    ],
+    'tribeAddBdd'
+);
 
 // Routes des Users
 $router->map(
