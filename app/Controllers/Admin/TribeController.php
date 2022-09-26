@@ -60,4 +60,22 @@ class TribeController extends CoreController
 
     $this->redirect('tribe');
 } 
+
+public function tribeAddPage() 
+{
+    $this->show('tribeAddPage');
+}
+
+public function tribeAddBdd() 
+{
+    $tribeName = filter_input(INPUT_POST, 'name');
+
+    $tribe = new Tribe;
+
+    $tribe->addTribe($tribeName);
+
+    $this->redirect('tribe');
+}
+
+
 } 

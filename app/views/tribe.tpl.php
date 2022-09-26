@@ -37,4 +37,9 @@
                 </tbody>
         </table>
     </div>
+    <button type="button" class="tribe__add">
+        <a href="<?= $router->generate('tribeAddPage')?>">
+            Ajouter une tribu
+        </a>
+    </button>
 </main>

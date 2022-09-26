@@ -93,26 +93,26 @@ thead {
     border-collapse: collapse;
     border: 3px solid grey;
 }
-.activityEdit__title, .activityDelete__title, .activityAdd__title, .shoppingListEdit__title, .shoppingListDelete__title, .shoppingListAdd__title, .rememberEdit__title, .rememberDelete__titlte, .rememberAdd__title, .tribeEdit__title, .tribeDelete__title {
+.activityEdit__title, .activityDelete__title, .activityAdd__title, .shoppingListEdit__title, .shoppingListDelete__title, .shoppingListAdd__title, .rememberEdit__title, .rememberDelete__titlte, .rememberAdd__title, .tribeEdit__title, .tribeDelete__title, .tribeAdd__title {
     text-align: center;
     margin: 50px;
 }
- .activityEdit__form .input, .activityDelete__form .input, .activityAdd__input, .shoppingListEdit__form .input, .shoppingListDelete__form .input, .shoppingListAdd__input, .rememberEdit__form .input, .rememberDelete__form .input, .rememberAdd__form .input, .tribeEdit__form .input, .tribeDelete__form .input  {
+ .activityEdit__form .input, .activityDelete__form .input, .activityAdd__input, .shoppingListEdit__form .input, .shoppingListDelete__form .input, .shoppingListAdd__input, .rememberEdit__form .input, .rememberDelete__form .input, .rememberAdd__form .input, .tribeEdit__form .input, .tribeDelete__form .input, .tribeAdd__form .input {
     display: flex;
     flex-direction: column;
     margin-left: 50px;
     margin-bottom: 40px;
     margin-right: 50px;
  }
- .activityEdit__form input, .activityDelete__form input, .activityAdd__form input, .shoppingListEdit__form input, .shoppingListDelete__form input, .rememberDelete__form input, .rememberAdd__form input, .tribeEdit__form input, .tribeDelete__form input {
+ .activityEdit__form input, .activityDelete__form input, .activityAdd__form input, .shoppingListEdit__form input, .shoppingListDelete__form input, .rememberDelete__form input, .rememberAdd__form input, .tribeEdit__form input, .tribeDelete__form input, .tribeAdd__form input {
     padding: 6px;
     margin-top: 6px;
  }
- .activityEdit__form--button, .activityDelete__form--button, .activityAdd__form--button, .shoppingListEdit__form--button, .shoppingListDelete__form--button, .shoppingListAdd__form--button, .rememberEdit__form--button, .rememberDelete__form--button , .rememberAdd__form--button, .tribeEdit__form--button , .tribeDelete__form--button{
+ .activityEdit__form--button, .activityDelete__form--button, .activityAdd__form--button, .shoppingListEdit__form--button, .shoppingListDelete__form--button, .shoppingListAdd__form--button, .rememberEdit__form--button, .rememberDelete__form--button , .rememberAdd__form--button, .tribeEdit__form--button , .tribeDelete__form--button, .tribeAdd__form--button{
     text-align: center;
     margin-bottom: 40px;
  }
- .activityEdit__form--button button, .activityAdd__form button, .shoppingListEdit__form button, .shoppingListAdd__form button, .rememberEdit__form button, .rememberAdd__form button, .tribeEdit__form button{
+ .activityEdit__form--button button, .activityAdd__form button, .shoppingListEdit__form button, .shoppingListAdd__form button, .rememberEdit__form button, .rememberAdd__form button, .tribeEdit__form button, .tribeAdd__form button{
     padding: 12px;
     color: aliceblue;
     background-color: green;
@@ -124,15 +124,15 @@ thead {
     background-color: red;
     border-radius: 20px;
  }
-.activity__add, .shoppingList__add, .remember__add {
+.activity__add, .shoppingList__add, .remember__add, .tribe__add {
     margin: 40px;
     padding: 12px;
     background-color: rgb(107, 160, 55);
     border-radius: 20px;
 }
-.activity__add a, .shoppingList__add a, .remember__add a {
+.activity__add a, .shoppingList__add a, .remember__add a, .tribe__add a{
     color: white;
 }
-.shoppingListEdit, .shoppingListDelete, .rememberEdit, .rememberDelete, .rememberAdd, .tribeEdit, .tribeDelete {
+.shoppingListEdit, .shoppingListDelete, .rememberEdit, .rememberDelete, .rememberAdd, .tribeEdit, .tribeDelete, .tribeAdd {
     height: 600px;
 }

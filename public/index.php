@@ -273,6 +273,26 @@ $router->map(
     'tribeDeleteBdd'
 );
 
+$router->map(
+    'GET',
+    '/tribe/Add',
+    [
+        'action' => 'tribeAddPage',
+        'controller' => 'Admin\TribeController'
+    ],
+    'tribeAddPage'
+);
+
+$router->map(
+    'POST',
+    '/tribe/Add',
+    [
+        'action' => 'tribeAddBdd',
+        'controller' => 'Admin\TribeController'
+    ],
+    'tribeAddBdd'
+);
+
 // Routes des Users
 $router->map(
     'GET',
