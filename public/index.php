@@ -324,6 +324,25 @@ $router->map(
     'userUpdate'
 );
 
+$router->map(
+    'GET',
+    '/user/Delete/[i:id]',
+    [
+        'action' => 'userDeletePage',
+        'controller' => 'Admin\UserController'
+    ],
+    'userDeletePage'
+);
+$router->map(
+    'POST',
+    '/user/Delete/[i:id]',
+    [
+        'action' => 'userDeleteBdd',
+        'controller' => 'Admin\UserController'
+    ],
+    'userDeleteBdd'
+);
+
 // Routes de l'API
 $router->map(
     'GET',

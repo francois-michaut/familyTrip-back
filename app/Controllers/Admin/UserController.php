@@ -34,10 +34,34 @@ class UserController extends CoreController
     $currentUser->setFirstname($firstname);
     $currentUser->setLastname($lastname);
     $currentUser->setEmail($email);
-    
+
     $currentUser->update();
 
     $this->redirect('user');
   } 
+
+  public function userDeletePage($id)
+ {
+    $currentId = $id['id'] ;
+
+    $user = new User;
+
+    $currentUser = $user->find($currentId);
+
+    $param = ['user' => $currentUser] ;
+
+    $this->show('userDelete', $param);
+ } 
+
+ public function userDeleteBdd($id)
+{
+    $currentId = $id['id'] ;
+
+    $currentUser = new User;
+
+    $currentUser->delete($currentId);
+
+    $this->redirect('user');
+} 
 } 
 

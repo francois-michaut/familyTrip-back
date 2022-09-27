@@ -100,6 +100,17 @@ class User extends CoreModel
         return $pdoStatement->execute();
   } 
 
+  public function delete($id)
+ {
+    $pdo = Database::getPDO();
+
+    $sql = "DELETE FROM `USER` WHERE id = $id ";
+
+    $pdoStatement = $pdo->prepare($sql);
+
+    return $pdoStatement->execute();
+ } 
+
     // ===================
     // Getters et Setters
     // ===================
