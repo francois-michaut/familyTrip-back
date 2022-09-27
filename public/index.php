@@ -343,6 +343,15 @@ $router->map(
     'userDeleteBdd'
 );
 
+$router->map(
+    'GET',
+    '/user/Add',
+    [
+        'action' => 'userAdd',
+        'controller' => 'Admin\UserController'
+    ],
+    'userAdd'
+);
 // Routes de l'API
 $router->map(
     'GET',

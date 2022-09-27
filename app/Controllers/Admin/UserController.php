@@ -63,5 +63,11 @@ class UserController extends CoreController
 
     $this->redirect('user');
 } 
+
+public function userAdd()
+{
+    $this->show('userAdd');
+} 
+
 } 
 

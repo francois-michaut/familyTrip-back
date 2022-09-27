@@ -42,4 +42,9 @@
             </tbody>
         </table>
     </div>
+    <button type="button" class="user__add">
+        <a href="<?= $router->generate('userAdd')?>">
+             Ajouter un utilistaeur
+        </a>
+    </button>
 </main>
