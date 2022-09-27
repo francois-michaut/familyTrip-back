@@ -20,6 +20,21 @@ class User extends CoreModel
     // ==================
     // Méthodes
     // ==================
+
+    public function find($id)
+    {
+        $pdo = Database::getPDO();
+
+        $sql = "SELECT * FROM `USER` WHERE `id` = $id  ";
+
+        $pdoStatement = $pdo->query($sql);
+
+        $user = $pdoStatement->fetchObject(User::class);
+
+        return $user;
+    } 
+
+
     public function findAll()
     {
         $pdo = Database::getPDO();
