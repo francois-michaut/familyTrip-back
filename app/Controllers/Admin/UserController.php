@@ -18,5 +18,26 @@ class UserController extends CoreController
 
         $this->show('userEdit', $param);
    } 
+
+   public function userUpdate($id)
+  {
+    $currentId = $id['id'] ;
+
+    $firstname = filter_input(INPUT_POST, 'firstname');
+    $lastname = filter_input(INPUT_POST, 'lastname');
+    $email = filter_input(INPUT_POST, 'email');
+
+    $user = new User;
+
+    $currentUser = $user->find($currentId);
+
+    $currentUser->setFirstname($firstname);
+    $currentUser->setLastname($lastname);
+    $currentUser->setEmail($email);
+    
+    $currentUser->update();
+
+    $this->redirect('user');
+  } 
 } 
 

@@ -25,7 +25,7 @@ class User extends CoreModel
     {
         $pdo = Database::getPDO();
 
-        $sql = "SELECT * FROM `USER` WHERE `id` = $id  ";
+        $sql = "SELECT * FROM `USER` WHERE `id` = $id ";
 
         $pdoStatement = $pdo->query($sql);
 
@@ -78,6 +78,27 @@ class User extends CoreModel
     $statement->execute();
    } 
 
+   public function update()
+  {
+        $pdo = Database::getPDO();
+
+        $sql = "UPDATE `USER`
+                SET 
+                    firstname = :firstname,
+                    lastname = :lastname,
+                    email = :email
+                WHERE id = :id
+            ";
+
+        $pdoStatement = $pdo->prepare($sql);
+
+        $pdoStatement->bindValue(':firstname', $this->firstname, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':lastname', $this->lastname, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':email', $this->email, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':id', $this->id, PDO::PARAM_STR);
+
+        return $pdoStatement->execute();
+  } 
 
     // ===================
     // Getters et Setters

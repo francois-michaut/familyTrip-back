@@ -314,6 +314,16 @@ $router->map(
     'userEditPage'
 );
 
+$router->map(
+    'POST',
+    '/user/Edit/[i:id]',
+    [
+        'action' => 'userUpdate',
+        'controller' => 'Admin\UserController'
+    ],
+    'userUpdate'
+);
+
 // Routes de l'API
 $router->map(
     'GET',
