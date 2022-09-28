@@ -111,6 +111,21 @@ class User extends CoreModel
     return $pdoStatement->execute();
  } 
 
+ public function add($firstname, $lastname, $email)
+{
+    $pdo = Database::getPDO();
+
+    $sql = "INSERT INTO `USER` (firstname, lastname, email) VALUES (:firstname, :lastname, :email)";
+
+    $pdoStatement = $pdo->prepare($sql);
+
+    $pdoStatement->bindParam(':firstname', $firstname);
+    $pdoStatement->bindParam(':lastname', $lastname);
+    $pdoStatement->bindParam(':email', $email);
+
+    $pdoStatement->execute();
+} 
+
     // ===================
     // Getters et Setters
     // ===================

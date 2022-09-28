@@ -69,5 +69,19 @@ public function userAdd()
     $this->show('userAdd');
 } 
 
+public function userAddToBdd() 
+{
+    $firstname = filter_input(INPUT_POST, 'firstname');
+    $lastname = filter_input(INPUT_POST, 'lastname');
+    $email = filter_input(INPUT_POST, 'email');
+
+    $newUser = new User;
+
+    $newUser->add($firstname, $lastname, $email);
+
+    $this->redirect('user');
+} 
+
+
 } 
 

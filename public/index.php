@@ -352,6 +352,17 @@ $router->map(
     ],
     'userAdd'
 );
+
+
+$router->map(
+    'POST',
+    '/user/Add',
+    [
+        'action' => 'userAddToBdd',
+        'controller' => 'Admin\UserController'
+    ],
+    'userAddToBdd'
+);
 // Routes de l'API
 $router->map(
     'GET',
