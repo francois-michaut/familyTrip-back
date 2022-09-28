@@ -304,6 +304,65 @@ $router->map(
     'user'
 );
 
+$router->map(
+    'GET',
+    '/user/Edit/[i:id]',
+    [
+        'action' => 'userEditPage',
+        'controller' => 'Admin\UserController'
+    ],
+    'userEditPage'
+);
+
+$router->map(
+    'POST',
+    '/user/Edit/[i:id]',
+    [
+        'action' => 'userUpdate',
+        'controller' => 'Admin\UserController'
+    ],
+    'userUpdate'
+);
+
+$router->map(
+    'GET',
+    '/user/Delete/[i:id]',
+    [
+        'action' => 'userDeletePage',
+        'controller' => 'Admin\UserController'
+    ],
+    'userDeletePage'
+);
+$router->map(
+    'POST',
+    '/user/Delete/[i:id]',
+    [
+        'action' => 'userDeleteBdd',
+        'controller' => 'Admin\UserController'
+    ],
+    'userDeleteBdd'
+);
+
+$router->map(
+    'GET',
+    '/user/Add',
+    [
+        'action' => 'userAdd',
+        'controller' => 'Admin\UserController'
+    ],
+    'userAdd'
+);
+
+
+$router->map(
+    'POST',
+    '/user/Add',
+    [
+        'action' => 'userAddToBdd',
+        'controller' => 'Admin\UserController'
+    ],
+    'userAddToBdd'
+);
 // Routes de l'API
 $router->map(
     'GET',
