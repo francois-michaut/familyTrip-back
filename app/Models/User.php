@@ -68,7 +68,9 @@ class User extends CoreModel
    {
     $pdo = Database::getPdo();
 
-    $sql = "INSERT INTO `USER` (pseudo, email, password) VALUES (:pseudo, :email, :password)";
+    $sql = "INSERT INTO `USER` (pseudo, email, password, role) VALUES (:pseudo, :email, :password, :role)";
+
+    $role = 'user';
 
     $statement = $pdo->prepare($sql);
 
@@ -76,6 +78,7 @@ class User extends CoreModel
     $statement->bindParam(':pseudo', $userName);
     $statement->bindParam(':email', $userEmail);
     $statement->bindParam(':password', $userPassword);
+    $statement->bindParam(':role', $role);
 
     $statement->execute();
    } 
