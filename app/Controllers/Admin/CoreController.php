@@ -28,4 +28,52 @@ abstract class CoreController
         header('Location: '.$router->generate($routeName));
         exit;
     }
+
+    public function __construct($routeName = '')
+   {
+    $acl =[
+       'activity' =>['admin', 'superAdmin'],
+       'activityAdd' =>['admin', 'superAdmin'] ,
+       'activityAddBdd' =>['admin', 'superAdmin'] ,
+       'activityEdit' =>['admin', 'superAdmin'] ,
+       'activityUpdate' =>['admin', 'superAdmin'] ,
+       'activityDelete' =>['admin', 'superAdmin'] ,
+       'activityWasDelete' =>['admin', 'superAdmin'] ,
+       'shoppinglist' =>['admin', 'superAdmin'] ,
+       'shoppinglistEdit' =>['admin', 'superAdmin'] ,
+       'shoppinglistEditUpdate' =>['admin', 'superAdmin'] ,
+       'shoppinglistDeletePage' =>['admin', 'superAdmin'] ,
+       'shoppinglistDelete' =>['admin', 'superAdmin'] ,
+       'shoppingListAdd' =>['admin', 'superAdmin'] ,
+       'shoppingListAddBdd' =>['admin', 'superAdmin'] ,
+       'remember' =>['admin', 'superAdmin'] ,
+       'rememberEdit' =>['admin', 'superAdmin'] ,
+       'rememberUpdate' =>['admin', 'superAdmin'] ,
+       'rememberDelete' =>['admin', 'superAdmin'] ,
+       'rememberDeleteBdd' =>['admin', 'superAdmin'] ,
+       'rememberAddPage' =>['admin', 'superAdmin'] ,
+       'rememberAddBdd' =>['admin', 'superAdmin'] ,
+       'tribe' =>['admin', 'superAdmin'] ,
+       'tribeEdit' =>['admin', 'superAdmin'] ,
+       'tribeEditUpdate' =>['admin', 'superAdmin'] ,
+       'tribeDelete' =>['admin', 'superAdmin'] ,
+       'tribeDeleteBdd' =>['admin', 'superAdmin'] ,
+       'tribeAddPage' =>['admin', 'superAdmin'] ,
+       'tribeAddBdd' =>['admin', 'superAdmin'] ,
+       'user' =>['superAdmin'] ,
+       'userEditPage' =>['superAdmin'] ,
+       'userUpdate' =>['superAdmin'] ,
+       'userDeletePage' =>['superAdmin'] ,
+       'userDeleteBdd' =>['superAdmin'] ,
+       'userAdd' =>['superAdmin'] ,
+       'userAddToBdd' =>['superAdmin'] ,
+
+    ];
+
+    if(!empty($routeName) && isset($acl[$routeName])){
+        $authorizedRoles = $acl[$routeName] ;
+
+        $this->checkAuthorization($authorizedRoles);
+    }     
+   } 
 }

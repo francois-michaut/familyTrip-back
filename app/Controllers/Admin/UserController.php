@@ -82,6 +82,33 @@ public function userAddToBdd()
     $this->redirect('user');
 } 
 
+public function login()
+{
+    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+    $password = filter_input(INPUT_POST, 'password');
+
+    $user = new User;
+
+    $currentUser = $user->findUserByMail($email);
+
+    if($currentUser !== false){
+        $currentPassword = $currentUser->getPassword();
+
+        if( password_verify($password, $currentPassword) === true ){
+            $_SESSION['user']  = $currentUser;
+            $_SESSION['response']  = 'ok';
+
+            $this->redirect('activity');
+        } 
+        else{
+            $this->show('err404');
+        } 
+    } else{
+        $this->show('err404');
+    } 
+} 
+
+
 
 } 
 

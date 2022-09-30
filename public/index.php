@@ -3,6 +3,8 @@
 // Outils Composer
 require __DIR__ . '//../vendor/autoload.php';
 
+session_start();
+
 $router = new AltoRouter();
 
 
@@ -18,6 +20,10 @@ if (array_key_exists('BASE_URI', $_SERVER)) {
     // On donne une valeur par défaut à $_SERVER['BASE_URI'] car c'est utilisé dans le CoreController
     $_SERVER['BASE_URI'] = '/';
 }
+
+// =====================
+// Routes du Back-office
+// ======================
 $router->map(
     'GET',
     '/',
@@ -27,7 +33,22 @@ $router->map(
     ],
     'home'
 );
+// ====================
+// Route de connexion
+// ====================
+$router->map(
+    'POST',
+    '/',
+    [
+        'action' => 'login',
+        'controller' => 'Admin\UserController'
+    ],
+    'login'
+);
+
+// ====================
 // Routes des activités
+// ====================
 $router->map(
     'GET',
     '/activity',
@@ -92,7 +113,9 @@ $router->map(
     'activityWasDelete'
 );
 
+// =========================
 // Routes des shoppinglist
+// =========================
 $router->map(
     'GET',
     '/shoppinglist',
@@ -158,7 +181,9 @@ $router->map(
     'shoppingListAddBdd'
 );
 
+// ====================
 // Routes des Remembers
+// ====================
 $router->map(
     'GET',
     '/remember',
@@ -224,7 +249,10 @@ $router->map(
     ],
     'rememberAddBdd'
 );
+
+// ==================
 // Routes des Tribes
+// ==================
 $router->map(
     'GET',
     '/tribe',
@@ -293,7 +321,9 @@ $router->map(
     'tribeAddBdd'
 );
 
+// =================
 // Routes des Users
+// =================
 $router->map(
     'GET',
     '/user',
@@ -363,7 +393,10 @@ $router->map(
     ],
     'userAddToBdd'
 );
+
+// ====================
 // Routes de l'API
+// ====================
 $router->map(
     'GET',
     '/Api/members',
