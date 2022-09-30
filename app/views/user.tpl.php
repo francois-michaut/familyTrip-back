@@ -44,7 +44,7 @@
     </div>
     <button type="button" class="user__add">
         <a href="<?= $router->generate('userAdd')?>">
-             Ajouter un utilistaeur
+             Ajouter un utilisateur
         </a>
     </button>
 </main>

@@ -16,6 +16,7 @@ class User extends CoreModel
     private $email;
     private $password; 
     private $tribe_id;
+    private $role;
 
     // ==================
     // Méthodes
@@ -126,6 +127,24 @@ class User extends CoreModel
     $pdoStatement->execute();
 } 
 
+public function findUserByMail($mail)
+{
+    $pdo = Database::getPDO();
+
+    $sql = "SELECT * FROM `USER` WHERE  `email`  = :mail";
+
+    $pdoStatement = $pdo->prepare($sql);
+
+    $pdoStatement->bindValue(':mail', $mail);
+
+    $pdoStatement->execute();
+
+    $user = $pdoStatement->fetchObject(USER::class);
+
+    return $user;
+} 
+
+
     // ===================
     // Getters et Setters
     // ===================
@@ -226,6 +245,26 @@ class User extends CoreModel
     public function setTribe_id($tribe_id)
     {
         $this->tribe_id = $tribe_id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of role
+     */ 
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * Set the value of role
+     *
+     * @return  self
+     */ 
+    public function setRole($role)
+    {
+        $this->role = $role;
 
         return $this;
     }
