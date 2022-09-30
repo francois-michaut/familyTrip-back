@@ -27,10 +27,11 @@ class UserController
     $pseudo = $user['userName'];
     $email = $user['userEmail'];
     $password = $user['userPassword'];
+    $hashPassword = password_hash($password, PASSWORD_DEFAULT);
 
     $user = new User();
     
-    $user->addUser($pseudo, $email, $password);
+    $user->addUser($pseudo, $email, $hashPassword);
 
     return $user;
 

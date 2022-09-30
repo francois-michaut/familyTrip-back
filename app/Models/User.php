@@ -72,6 +72,7 @@ class User extends CoreModel
 
     $statement = $pdo->prepare($sql);
 
+
     $statement->bindParam(':pseudo', $userName);
     $statement->bindParam(':email', $userEmail);
     $statement->bindParam(':password', $userPassword);

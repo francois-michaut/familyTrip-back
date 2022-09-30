@@ -94,8 +94,9 @@ public function login()
     if($currentUser !== false){
         $currentPassword = $currentUser->getPassword();
 
-        if( $currentPassword === $password ){
-            $_SESSION['user']  = $user->getFirstname();
+        if( password_verify($password, $currentPassword) === true ){
+            $_SESSION['user']  = $currentUser;
+            $_SESSION['response']  = 'ok';
 
             $this->redirect('activity');
         } 
