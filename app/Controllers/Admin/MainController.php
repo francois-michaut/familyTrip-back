@@ -69,10 +69,10 @@ class MainController extends CoreController
 
         $this->show( 'user', $param);
     }
-
+/* 
     public function err404()
     {
         $this->show( 'err404' );
-    }
+    } */
 
 }

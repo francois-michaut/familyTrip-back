@@ -11,7 +11,6 @@
                  <?php foreach( $param['tribesList'] as $key => $tribe) { ?>
                     <tr class="first-row row">
                         <th><?= $tribe['name'] ?></th>
-                        <!-- <th><?= $tribe['firstname'].' ' .$tribe     ['lastname']?></th> -->
                         <th>
                             <button type="button" class="btn-edit">
                                 <a href="<?= $router->generate('tribeEdit') ?><?= $tribe['id']?>">

@@ -26,9 +26,9 @@ if (array_key_exists('BASE_URI', $_SERVER)) {
 // ======================
 $router->map(
     'GET',
-    '/',
+    '/login',
     [
-        'action' => 'home',
+        'method' => 'home',
         'controller' => 'Admin\MainController'
     ],
     'home'
@@ -38,12 +38,22 @@ $router->map(
 // ====================
 $router->map(
     'POST',
-    '/',
+    '/login',
     [
-        'action' => 'login',
+        'method' => 'login',
         'controller' => 'Admin\UserController'
     ],
     'login'
+);
+
+$router->map(
+    'GET',
+    '/',
+    [
+        'method' => 'logout',
+        'controller' => 'Admin\UserController'
+    ],
+    'logout'
 );
 
 // ====================
@@ -53,7 +63,7 @@ $router->map(
     'GET',
     '/activity',
     [
-        'action' => 'activity',
+        'method' => 'activity',
         'controller' => 'Admin\MainController'
     ],
     'activity'
@@ -62,7 +72,7 @@ $router->map(
     'GET',
     '/activity/Add',
     [
-        'action' => 'activityAdd',
+        'method' => 'activityAdd',
         'controller' => 'Admin\ActivityController'
     ],
     'activityAdd'
@@ -71,7 +81,7 @@ $router->map(
     'POST',
     '/activity/Add',
     [
-        'action' => 'activityAddBdd',
+        'method' => 'activityAddBdd',
         'controller' => 'Admin\ActivityController'
     ],
     'activityAddBdd'
@@ -80,7 +90,7 @@ $router->map(
     'GET',
     '/activity/Edit/[i:id]',
     [
-        'action' => 'activityEdit',
+        'method' => 'activityEdit',
         'controller' => 'Admin\ActivityController'
     ],
     'activityEdit'
@@ -89,7 +99,7 @@ $router->map(
     'POST',
     '/activity/Edit/[i:id]',
     [
-        'action' => 'activityUpdate',
+        'method' => 'activityUpdate',
         'controller' => 'Admin\ActivityController'
     ],
     'activityUpdate'
@@ -98,7 +108,7 @@ $router->map(
     'GET',
     '/activity/Delete/[i:id]',
     [
-        'action' => 'activityDeletePage',
+        'method' => 'activityDeletePage',
         'controller' => 'Admin\ActivityController'
     ],
     'activityDelete'
@@ -107,7 +117,7 @@ $router->map(
     'POST',
     '/activity/Delete/[i:id]',
     [
-        'action' => 'activityDelete',
+        'method' => 'activityDelete',
         'controller' => 'Admin\ActivityController'
     ],
     'activityWasDelete'
@@ -120,7 +130,7 @@ $router->map(
     'GET',
     '/shoppinglist',
     [
-        'action' => 'shoppinglist',
+        'method' => 'shoppinglist',
         'controller' => 'Admin\MainController'
     ],
     'shoppinglist'
@@ -129,7 +139,7 @@ $router->map(
     'GET',
     '/shoppinglist/Edit/[i:id]',
     [
-        'action' => 'shoppinglistEdit',
+        'method' => 'shoppinglistEdit',
         'controller' => 'Admin\ShoppingListController'
     ],
     'shoppinglistEdit'
@@ -138,7 +148,7 @@ $router->map(
     'POST',
     '/shoppinglist/Edit/[i:id]',
     [
-        'action' => 'shoppinglistUpdate',
+        'method' => 'shoppinglistUpdate',
         'controller' => 'Admin\ShoppingListController'
     ],
     'shoppinglistEditUpdate'
@@ -147,7 +157,7 @@ $router->map(
     'GET',
     '/shoppinglist/Delete/[i:id]',
     [
-        'action' => 'shoppinglistDeletePage',
+        'method' => 'shoppinglistDeletePage',
         'controller' => 'Admin\ShoppingListController'
     ],
     'shoppinglistDeletePage'
@@ -156,7 +166,7 @@ $router->map(
     'POST',
     '/shoppinglist/Delete/[i:id]',
     [
-        'action' => 'shoppinglistDelete',
+        'method' => 'shoppinglistDelete',
         'controller' => 'Admin\ShoppingListController'
     ],
     'shoppinglistDelete'
@@ -165,7 +175,7 @@ $router->map(
     'GET',
     '/shoppinglist/Add',
     [
-        'action' => 'shoppinglistAddPage',
+        'method' => 'shoppinglistAddPage',
         'controller' => 'Admin\ShoppingListController'
     ],
     'shoppingListAdd'
@@ -175,7 +185,7 @@ $router->map(
     'POST',
     '/shoppinglist/Add',
     [
-        'action' => 'shoppinglistAddPageToBdd',
+        'method' => 'shoppinglistAddPageToBdd',
         'controller' => 'Admin\ShoppingListController'
     ],
     'shoppingListAddBdd'
@@ -188,7 +198,7 @@ $router->map(
     'GET',
     '/remember',
     [
-        'action' => 'remember',
+        'method' => 'remember',
         'controller' => 'Admin\MainController'
     ],
     'remember'
@@ -198,7 +208,7 @@ $router->map(
     'GET',
     '/remember/Edit/[i:id]',
     [
-        'action' => 'rememberEditPage',
+        'method' => 'rememberEditPage',
         'controller' => 'Admin\RememberController'
     ],
     'rememberEdit'
@@ -207,7 +217,7 @@ $router->map(
     'POST',
     '/remember/Edit/[i:id]',
     [
-        'action' => 'rememberUpdate',
+        'method' => 'rememberUpdate',
         'controller' => 'Admin\RememberController'
     ],
     'rememberUpdate'
@@ -217,7 +227,7 @@ $router->map(
     'GET',
     '/remember/Delete/[i:id]',
     [
-        'action' => 'rememberDeletePage',
+        'method' => 'rememberDeletePage',
         'controller' => 'Admin\RememberController'
     ],
     'rememberDelete'
@@ -226,7 +236,7 @@ $router->map(
     'POST',
     '/remember/Delete/[i:id]',
     [
-        'action' => 'rememberDelete',
+        'method' => 'rememberDelete',
         'controller' => 'Admin\RememberController'
     ],
     'rememberDeleteBdd'
@@ -235,7 +245,7 @@ $router->map(
     'GET',
     '/remember/Add',
     [
-        'action' => 'rememberAddPage',
+        'method' => 'rememberAddPage',
         'controller' => 'Admin\RememberController'
     ],
     'rememberAddPage'
@@ -244,7 +254,7 @@ $router->map(
     'POST',
     '/remember/Add',
     [
-        'action' => 'rememberAddBdd',
+        'method' => 'rememberAddBdd',
         'controller' => 'Admin\RememberController'
     ],
     'rememberAddBdd'
@@ -257,7 +267,7 @@ $router->map(
     'GET',
     '/tribe',
     [
-        'action' => 'tribe',
+        'method' => 'tribe',
         'controller' => 'Admin\MainController'
     ],
     'tribe'
@@ -266,7 +276,7 @@ $router->map(
     'GET',
     '/tribe/Edit/[i:id]',
     [
-        'action' => 'tribeEdit',
+        'method' => 'tribeEdit',
         'controller' => 'Admin\TribeController'
     ],
     'tribeEdit'
@@ -275,7 +285,7 @@ $router->map(
     'POST',
     '/tribe/Edit/[i:id]',
     [
-        'action' => 'tribeUpdate',
+        'method' => 'tribeUpdate',
         'controller' => 'Admin\TribeController'
     ],
     'tribeEditUpdate'
@@ -285,7 +295,7 @@ $router->map(
     'GET',
     '/tribe/Delete/[i:id]',
     [
-        'action' => 'tribeDelete',
+        'method' => 'tribeDelete',
         'controller' => 'Admin\TribeController'
     ],
     'tribeDelete'
@@ -295,7 +305,7 @@ $router->map(
     'POST',
     '/tribe/Delete/[i:id]',
     [
-        'action' => 'tribeDeleteInBdd',
+        'method' => 'tribeDeleteInBdd',
         'controller' => 'Admin\TribeController'
     ],
     'tribeDeleteBdd'
@@ -305,7 +315,7 @@ $router->map(
     'GET',
     '/tribe/Add',
     [
-        'action' => 'tribeAddPage',
+        'method' => 'tribeAddPage',
         'controller' => 'Admin\TribeController'
     ],
     'tribeAddPage'
@@ -315,7 +325,7 @@ $router->map(
     'POST',
     '/tribe/Add',
     [
-        'action' => 'tribeAddBdd',
+        'method' => 'tribeAddBdd',
         'controller' => 'Admin\TribeController'
     ],
     'tribeAddBdd'
@@ -328,7 +338,7 @@ $router->map(
     'GET',
     '/user',
     [
-        'action' => 'user',
+        'method' => 'user',
         'controller' => 'Admin\MainController'
     ],
     'user'
@@ -338,7 +348,7 @@ $router->map(
     'GET',
     '/user/Edit/[i:id]',
     [
-        'action' => 'userEditPage',
+        'method' => 'userEditPage',
         'controller' => 'Admin\UserController'
     ],
     'userEditPage'
@@ -348,7 +358,7 @@ $router->map(
     'POST',
     '/user/Edit/[i:id]',
     [
-        'action' => 'userUpdate',
+        'method' => 'userUpdate',
         'controller' => 'Admin\UserController'
     ],
     'userUpdate'
@@ -358,7 +368,7 @@ $router->map(
     'GET',
     '/user/Delete/[i:id]',
     [
-        'action' => 'userDeletePage',
+        'method' => 'userDeletePage',
         'controller' => 'Admin\UserController'
     ],
     'userDeletePage'
@@ -367,7 +377,7 @@ $router->map(
     'POST',
     '/user/Delete/[i:id]',
     [
-        'action' => 'userDeleteBdd',
+        'method' => 'userDeleteBdd',
         'controller' => 'Admin\UserController'
     ],
     'userDeleteBdd'
@@ -377,7 +387,7 @@ $router->map(
     'GET',
     '/user/Add',
     [
-        'action' => 'userAdd',
+        'method' => 'userAdd',
         'controller' => 'Admin\UserController'
     ],
     'userAdd'
@@ -388,7 +398,7 @@ $router->map(
     'POST',
     '/user/Add',
     [
-        'action' => 'userAddToBdd',
+        'method' => 'userAddToBdd',
         'controller' => 'Admin\UserController'
     ],
     'userAddToBdd'
@@ -464,7 +474,16 @@ $router->map(
 
 $match = $router->match();
 
-if ( $match )
+
+$dispatcher = new Dispatcher($match, 'Admin\ErrorController::err404');
+
+$dispatcher->setControllersNamespace('\FamilyTrip\Controllers');
+
+$dispatcher->setControllersArguments($match['name']);
+
+$dispatcher->dispatch();
+
+/* if ( $match )
 {
     $controllerToUse = '\\FamilyTrip\\Controllers\\' . $match['target']['controller'] ;
     $methodToUse = $match['target']['action'];
@@ -477,4 +496,4 @@ if ( $match )
 $params = $match['params'];
 
 $controller = new $controllerToUse();
-$controller->$methodToUse($params);
+$controller->$methodToUse($params); */

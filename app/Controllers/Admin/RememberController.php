@@ -8,11 +8,9 @@ class RememberController extends CoreController
 {
     public function rememberEditPage($id)
    {
-    $rememberId = $id['id'];
-
     $remember = new Remember;
 
-    $currentRemember = $remember->find($rememberId);
+    $currentRemember = $remember->find($id);
 
     $param =['remember' => $currentRemember] ;
 
@@ -22,8 +20,6 @@ class RememberController extends CoreController
 
    public function rememberUpdate($id)
   {
-    $currentId = $id['id'] ;
-
     $rememberName = filter_input(INPUT_POST, 'name');
     $rememberLocation = filter_input(INPUT_POST, 'location');
     $rememberDate = filter_input(INPUT_POST, 'date');
@@ -31,7 +27,7 @@ class RememberController extends CoreController
 
     $remember = new Remember;
 
-    $currentRemember = $remember->find($currentId);
+    $currentRemember = $remember->find($id);
 
     $currentRemember->setName($rememberName);
     $currentRemember->setLocation($rememberLocation);
@@ -45,11 +41,9 @@ class RememberController extends CoreController
 
   public function rememberDeletePage($id)
  {
-    $currentId = $id['id'];
-
     $remember = new Remember;
 
-    $currentRemember = $remember->find($currentId);
+    $currentRemember = $remember->find($id);
 
     $param['remember'] = $currentRemember;
 
@@ -58,11 +52,9 @@ class RememberController extends CoreController
 
  public function rememberDelete($id)
 {
-  $currentId = $id['id'];
-
   $remember = new Remember;
 
-  $currentRemember = $remember->delete($currentId);
+  $currentRemember = $remember->delete($id);
 
   $this->redirect('remember');
 } 

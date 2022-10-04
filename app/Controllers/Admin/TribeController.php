@@ -8,11 +8,11 @@ class TribeController extends CoreController
 {
     public function tribeEdit($id)
    {
-    $currentId = $id['id'] ;
+    /* $currentId = $id['id'] ; */
 
     $tribe = new Tribe;
 
-    $currentTribe = $tribe->find($currentId);
+    $currentTribe = $tribe->find($id);
 
     $param =['tribe' => $currentTribe] ;
 
@@ -21,14 +21,14 @@ class TribeController extends CoreController
 
    public function tribeUpdate($id)
   {
-    $currentId = $id['id'] ;
+    /* $currentId = $id['id'] ; */
 
     $tribeName = filter_input(INPUT_POST, 'name');
     $tribeId = filter_input(INPUT_POST, 'id');
 
     $tribe = new Tribe;
 
-    $currentTribe = $tribe->find($currentId);
+    $currentTribe = $tribe->find($id);
 
     $currentTribe->setName($tribeName);
 
@@ -39,11 +39,11 @@ class TribeController extends CoreController
 
   public function tribeDelete($id)
  {
-    $currentId = $id['id'];
+    
 
     $tribe = new Tribe;
 
-    $currentTribe = $tribe->find($currentId);
+    $currentTribe = $tribe->find($id);
 
     $param =['tribe' => $currentTribe] ;
 
@@ -52,11 +52,9 @@ class TribeController extends CoreController
 
  public function tribeDeleteInBdd($id)
 {
-    $currentId = $id['id'] ;
+       $tribe = new Tribe;
 
-    $tribe = new Tribe;
-
-    $currentTribe = $tribe->delete($currentId);
+    $currentTribe = $tribe->delete($id);
 
     $this->redirect('tribe');
 } 

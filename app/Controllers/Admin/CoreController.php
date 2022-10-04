@@ -4,6 +4,58 @@ namespace FamilyTrip\Controllers\Admin;
 
 abstract class CoreController
 {
+    public function __construct($routeName = '')
+   {
+    $acl = [
+        'home' => ['user', 'admin', 'superAdmin'] ,
+        'login' => ['user', 'admin', 'superAdmin'] ,
+        'logout' => ['user', 'admin', 'superAdmin'] ,
+       'activity' => ['admin', 'superAdmin'],
+       'activityAdd' => ['admin', 'superAdmin'],
+       'activityAddBdd' => ['admin', 'superAdmin'],
+       'activityEdit' => ['admin', 'superAdmin'],
+       'activityUpdate' => ['admin', 'superAdmin'],
+       'activityDelete' => ['admin', 'superAdmin'],
+       'activityWasDelete' => ['admin', 'superAdmin'],
+       'shoppinglist' => ['admin', 'superAdmin'],
+       'shoppinglistEdit' => ['admin', 'superAdmin'],
+       'shoppinglistEditUpdate' => ['admin', 'superAdmin'],
+       'shoppinglistDeletePage' => ['admin', 'superAdmin'],
+       'shoppinglistDelete' => ['admin', 'superAdmin'],
+       'shoppingListAdd' => ['admin', 'superAdmin'],
+       'shoppingListAddBdd' => ['admin', 'superAdmin'],
+       'remember' => ['admin', 'superAdmin'],
+       'rememberEdit' => ['admin', 'superAdmin'],
+       'rememberUpdate' => ['admin', 'superAdmin'],
+       'rememberDelete' => ['admin', 'superAdmin'],
+       'rememberDeleteBdd' => ['admin', 'superAdmin'],
+       'rememberAddPage' => ['admin', 'superAdmin'],
+       'rememberAddBdd' => ['admin', 'superAdmin'],
+       'tribe' => ['admin', 'superAdmin'],
+       'tribeEdit' => ['admin', 'superAdmin'],
+       'tribeEditUpdate' => ['admin', 'superAdmin'],
+       'tribeDelete' => ['admin', 'superAdmin'],
+       'tribeDeleteBdd' => ['admin', 'superAdmin'],
+       'tribeAddPage' => ['admin', 'superAdmin'],
+       'tribeAddBdd' => ['admin', 'superAdmin'],
+       'user' => ['superAdmin'],
+       'userEditPage' => ['superAdmin'],
+       'userUpdate' => ['superAdmin'],
+       'userDeletePage' => ['superAdmin'],
+       'userDeleteBdd' => ['superAdmin'],
+       'userAdd' => ['superAdmin'],
+       'userAddToBdd' => ['superAdmin'],
+
+    ];
+
+    if(!empty($routeName) && isset($acl[$routeName])){
+
+        $authorizedRoles = $acl[$routeName] ;
+
+        $this->checkAuthorization($authorizedRoles);
+    }     
+   } 
+
     protected function show($viewName , $param =[])
     {
         global $router;
@@ -29,51 +81,26 @@ abstract class CoreController
         exit;
     }
 
-    public function __construct($routeName = '')
+    public function checkAuthorization(array $role = [] )
    {
-    $acl =[
-       'activity' =>['admin', 'superAdmin'],
-       'activityAdd' =>['admin', 'superAdmin'] ,
-       'activityAddBdd' =>['admin', 'superAdmin'] ,
-       'activityEdit' =>['admin', 'superAdmin'] ,
-       'activityUpdate' =>['admin', 'superAdmin'] ,
-       'activityDelete' =>['admin', 'superAdmin'] ,
-       'activityWasDelete' =>['admin', 'superAdmin'] ,
-       'shoppinglist' =>['admin', 'superAdmin'] ,
-       'shoppinglistEdit' =>['admin', 'superAdmin'] ,
-       'shoppinglistEditUpdate' =>['admin', 'superAdmin'] ,
-       'shoppinglistDeletePage' =>['admin', 'superAdmin'] ,
-       'shoppinglistDelete' =>['admin', 'superAdmin'] ,
-       'shoppingListAdd' =>['admin', 'superAdmin'] ,
-       'shoppingListAddBdd' =>['admin', 'superAdmin'] ,
-       'remember' =>['admin', 'superAdmin'] ,
-       'rememberEdit' =>['admin', 'superAdmin'] ,
-       'rememberUpdate' =>['admin', 'superAdmin'] ,
-       'rememberDelete' =>['admin', 'superAdmin'] ,
-       'rememberDeleteBdd' =>['admin', 'superAdmin'] ,
-       'rememberAddPage' =>['admin', 'superAdmin'] ,
-       'rememberAddBdd' =>['admin', 'superAdmin'] ,
-       'tribe' =>['admin', 'superAdmin'] ,
-       'tribeEdit' =>['admin', 'superAdmin'] ,
-       'tribeEditUpdate' =>['admin', 'superAdmin'] ,
-       'tribeDelete' =>['admin', 'superAdmin'] ,
-       'tribeDeleteBdd' =>['admin', 'superAdmin'] ,
-       'tribeAddPage' =>['admin', 'superAdmin'] ,
-       'tribeAddBdd' =>['admin', 'superAdmin'] ,
-       'user' =>['superAdmin'] ,
-       'userEditPage' =>['superAdmin'] ,
-       'userUpdate' =>['superAdmin'] ,
-       'userDeletePage' =>['superAdmin'] ,
-       'userDeleteBdd' =>['superAdmin'] ,
-       'userAdd' =>['superAdmin'] ,
-       'userAddToBdd' =>['superAdmin'] ,
 
-    ];
+        if( !isset($_SESSION['user'] )){
 
-    if(!empty($routeName) && isset($acl[$routeName])){
-        $authorizedRoles = $acl[$routeName] ;
+            $this->show('home');
 
-        $this->checkAuthorization($authorizedRoles);
-    }     
+        } else {
+            $userConnected = $_SESSION['user'] ;
+
+            $userRole = $userConnected->getRole();
+
+
+            if(!empty($role) && !in_array($userRole, $role)){
+
+                $errorController = new ErrorController();
+
+                $errorController->err404();
+            } 
+        } 
    } 
+
 }
