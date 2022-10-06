@@ -17,6 +17,7 @@ class User extends CoreModel
     private $password; 
     private $tribe_id;
     private $role;
+    private $pseudo;
 
     // ==================
     // Méthodes
@@ -269,6 +270,25 @@ public function findUserByMail($mail)
     public function setRole($role)
     {
         $this->role = $role;
+
+        return $this;
+    }
+    /**
+     * Get the value of pseudo
+     */ 
+    public function getPseudo()
+    {
+        return $this->pseudo;
+    }
+
+    /**
+     * Set the value of pseudo
+     *
+     * @return  self
+     */ 
+    public function setPseudo($pseudo)
+    {
+        $this->pseudo = $pseudo;
 
         return $this;
     }

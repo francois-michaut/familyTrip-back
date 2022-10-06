@@ -97,10 +97,12 @@ class UserController extends CoreController
                 $this->redirect('home');
             } 
             else{
-                $this->show('err404');
+                $this->redirect('err404');
+               
             } 
         } else{
-            $this->show('err404');
+            $this->redirect('err404');
+            
         } 
     } 
 
@@ -108,9 +110,12 @@ class UserController extends CoreController
    {
     unset($_SESSION['user']);
     unset($_SESSION['userConnected']);
-    $_SESSION['response']  = 'déconnexion';
+    unset($_SESSION['response']);
     
-    $this->show('login');
+    $this->redirect('home');
+
+    
+
    } 
 
 

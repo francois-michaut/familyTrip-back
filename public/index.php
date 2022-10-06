@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 // Outils Composer
 require __DIR__ . '//../vendor/autoload.php';
@@ -24,9 +24,10 @@ if (array_key_exists('BASE_URI', $_SERVER)) {
 // =====================
 // Routes du Back-office
 // ======================
+
 $router->map(
     'GET',
-    '/login',
+    '/',
     [
         'method' => 'home',
         'controller' => 'Admin\MainController'
@@ -36,9 +37,10 @@ $router->map(
 // ====================
 // Route de connexion
 // ====================
+
 $router->map(
     'POST',
-    '/login',
+    '/',
     [
         'method' => 'login',
         'controller' => 'Admin\UserController'
@@ -46,14 +48,15 @@ $router->map(
     'login'
 );
 
+
 $router->map(
     'GET',
-    '/',
-    [
-        'method' => 'logout',
-        'controller' => 'Admin\UserController'
-    ],
-    'logout'
+    '/logout',
+   [
+    'method' => 'logout',
+    'controller' => 'Admin\UserController'
+   ],
+   'logout'  
 );
 
 // ====================
@@ -411,7 +414,7 @@ $router->map(
     'GET',
     '/Api/members',
     [
-        'action' => 'getUsers',
+        'method' => 'getUsers',
         'controller' => 'Api\UserController'
     ],
     'members'
@@ -420,7 +423,7 @@ $router->map(
     'POST',
     '/Api/createRememberPost',
     [
-        'action' => 'rememberPost',
+        'method' => 'rememberPost',
         'controller' => 'Api\RememberController'
     ],
     'rememberCreationPost'
@@ -429,7 +432,7 @@ $router->map(
     'POST',
     '/Api/createShoppingListPost',
     [
-        'action' => 'shoppingListPost',
+        'method' => 'shoppingListPost',
         'controller' => 'Api\ShoppingListController'
     ],
     'shoppingListCreationPost'
@@ -438,7 +441,7 @@ $router->map(
     'POST',
     '/Api/createTribePost',
     [
-        'action' => 'postTribeNamePost',
+        'method' => 'postTribeNamePost',
         'controller' => 'Api\TribeController'
     ],
     'tribeCreationPost'
@@ -447,7 +450,7 @@ $router->map(
     'POST',
     '/Api/createActivityPost',
     [
-        'action' => 'activityPost',
+        'method' => 'activityPost',
         'controller' => 'Api\ActivityController'
     ],
     'activityCreationPost'
@@ -456,7 +459,7 @@ $router->map(
     'POST',
     '/Api/userPost',
     [
-        'action' => 'userPost',
+        'method' => 'userPost',
         'controller' => 'Api\UserController'
     ],
     'userCreationPost'
@@ -465,7 +468,7 @@ $router->map(
     'GET',
     '/Api/tribes',
     [
-        'action' => 'getTribes',
+        'method' => 'getTribes',
         'controller' => 'Api\TribeController'
     ],
     'tribesList'

@@ -84,9 +84,13 @@ abstract class CoreController
     public function checkAuthorization(array $role = [] )
    {
 
-        if( !isset($_SESSION['user'] )){
+        if(!isset($_SESSION['user'])){
 
-            $this->show('home');
+            global $router;
+
+            $_SESSION['response']   = 'Vous devez être connecté pour voir cette page';
+
+            $router->generate('home');
 
         } else {
             $userConnected = $_SESSION['user'] ;
