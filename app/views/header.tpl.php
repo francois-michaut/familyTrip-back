@@ -13,7 +13,18 @@
 <body>
     <header class="header">
         <h1 class="header__title"><a href="<?= $router->generate('home')?>">Back-Office de Family Trip</a></h1>
+        <?php if(isset($_SESSION['user'] )){ ?>
+            <a href="<?= $router->generate('logout')?>">Déconnexion</a>
+        <?php }  ?>
         <nav class="header__navbar">
+            <?php if(!$_SESSION['user']){ ?>
+                <ul class="header__navbar-list">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+             <?php } else{ ?> 
             <ul class="header__navbar-list">
                 <li><a href="<?= $router->generate('activity') ?>">Activités</a></li>
                 <li><a href="<?= $router->generate('shoppinglist') ?>">Shoppinglist</a></li>
@@ -21,5 +32,6 @@
                 <li><a href="<?= $router->generate('tribe') ?>">Tribus</a></li>
                 <li><a href="<?= $router->generate('user') ?>">Membres</a></li>
             </ul>
+            <?php } ?> 
         </nav>
     </header>

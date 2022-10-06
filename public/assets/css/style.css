@@ -93,7 +93,7 @@ thead {
     border-collapse: collapse;
     border: 3px solid grey;
 }
-.activityEdit__title, .activityDelete__title, .activityAdd__title, .shoppingListEdit__title, .shoppingListDelete__title, .shoppingListAdd__title, .rememberEdit__title, .rememberDelete__titlte, .rememberAdd__title, .tribeEdit__title, .tribeDelete__title, .tribeAdd__title, .userEdit__title, .userDelete__title, .userAdd__title {
+.activityEdit__title, .activityDelete__title, .activityAdd__title, .shoppingListEdit__title, .shoppingListDelete__title, .shoppingListAdd__title, .rememberEdit__title, .rememberDelete__titlte, .rememberAdd__title, .tribeEdit__title, .tribeDelete__title, .tribeAdd__title, .userEdit__title, .userDelete__title, .userAdd__title, .error__message {
     text-align: center;
     margin: 50px;
 }
@@ -133,6 +133,6 @@ thead {
 .activity__add a, .shoppingList__add a, .remember__add a, .tribe__add a, .user__add a{
     color: white;
 }
-.shoppingListEdit, .shoppingListDelete, .rememberEdit, .rememberDelete, .rememberAdd, .tribeEdit, .tribeDelete, .tribeAdd, .userEdit, .userDelete, .userAdd {
+.shoppingListEdit, .shoppingListDelete, .rememberEdit, .rememberDelete, .rememberAdd, .tribeEdit, .tribeDelete, .tribeAdd, .userEdit, .userDelete, .userAdd, .error {
     height: 600px;
 }

@@ -9,11 +9,9 @@ class ActivityController extends CoreController
 
     public function activityEdit($id) 
     {
-        $activityId = $id['id'];
-
        $activity = new Activity;
 
-       $activityObject = $activity->find($activityId);
+       $activityObject = $activity->find($id);
 
 
        $param =  ['activity' => $activityObject ];
@@ -26,11 +24,9 @@ class ActivityController extends CoreController
 
     public function activityDeletePage($id)
     {
-        $activityId = $id['id'];
-
         $activity = new Activity;
 
-        $activityObject = $activity->find($activityId);
+        $activityObject = $activity->find($id);
 
         $param = ['activity' => $activityObject ];
 
@@ -39,19 +35,15 @@ class ActivityController extends CoreController
 
     public function activityDelete($id)
     {
-        $activityId = $id['id'];
-
         $activity = new Activity;
 
-        $activity->delete($activityId);
+        $activity->delete($id);
 
         $this->redirect('activity');
     }
 
     public function activityUpdate($id)
     {
-        $activityId = $id['id'];
-        // dump($activityId);
         $activityType = filter_input(INPUT_POST, 'activityType');
         $activityDate = filter_input(INPUT_POST, 'activityDate');
         $activityLocation = filter_input(INPUT_POST, 'activityLocation');
@@ -60,7 +52,7 @@ class ActivityController extends CoreController
 
         $activity = new Activity;
 
-        $newActivity = $activity->find($activityId);
+        $newActivity = $activity->find($id);
 
         $newActivity->setType($activityType);
         $newActivity->setDate($activityDate);

@@ -8,11 +8,9 @@ class UserController extends CoreController
 {
     public function userEditPage($id)
    {
-        $currentId = $id['id'] ;
-
         $user = new User;
 
-        $currentUser = $user->find($currentId);
+        $currentUser = $user->find($id);
 
         $param = ['user' => $currentUser] ;
 
@@ -21,7 +19,6 @@ class UserController extends CoreController
 
    public function userUpdate($id)
   {
-    $currentId = $id['id'] ;
 
     $firstname = filter_input(INPUT_POST, 'firstname');
     $lastname = filter_input(INPUT_POST, 'lastname');
@@ -29,7 +26,7 @@ class UserController extends CoreController
 
     $user = new User;
 
-    $currentUser = $user->find($currentId);
+    $currentUser = $user->find($id);
 
     $currentUser->setFirstname($firstname);
     $currentUser->setLastname($lastname);
@@ -42,71 +39,84 @@ class UserController extends CoreController
 
   public function userDeletePage($id)
  {
-    $currentId = $id['id'] ;
 
     $user = new User;
 
-    $currentUser = $user->find($currentId);
+    $currentUser = $user->find($id);
 
     $param = ['user' => $currentUser] ;
 
     $this->show('userDelete', $param);
  } 
 
- public function userDeleteBdd($id)
-{
-    $currentId = $id['id'] ;
+    public function userDeleteBdd($id)
+    {
 
-    $currentUser = new User;
+        $currentUser = new User;
 
-    $currentUser->delete($currentId);
+        $currentUser->delete($id);
 
-    $this->redirect('user');
-} 
-
-public function userAdd()
-{
-    $this->show('userAdd');
-} 
-
-public function userAddToBdd() 
-{
-    $firstname = filter_input(INPUT_POST, 'firstname');
-    $lastname = filter_input(INPUT_POST, 'lastname');
-    $email = filter_input(INPUT_POST, 'email');
-
-    $newUser = new User;
-
-    $newUser->add($firstname, $lastname, $email);
-
-    $this->redirect('user');
-} 
-
-public function login()
-{
-    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-    $password = filter_input(INPUT_POST, 'password');
-
-    $user = new User;
-
-    $currentUser = $user->findUserByMail($email);
-
-    if($currentUser !== false){
-        $currentPassword = $currentUser->getPassword();
-
-        if( password_verify($password, $currentPassword) === true ){
-            $_SESSION['user']  = $currentUser;
-            $_SESSION['response']  = 'ok';
-
-            $this->redirect('activity');
-        } 
-        else{
-            $this->show('err404');
-        } 
-    } else{
-        $this->show('err404');
+        $this->redirect('user');
     } 
-} 
+
+    public function userAdd()
+    {
+        $this->show('userAdd');
+    } 
+
+    public function userAddToBdd() 
+    {
+        $firstname = filter_input(INPUT_POST, 'firstname');
+        $lastname = filter_input(INPUT_POST, 'lastname');
+        $email = filter_input(INPUT_POST, 'email');
+
+        $newUser = new User;
+
+        $newUser->add($firstname, $lastname, $email);
+
+        $this->redirect('user');
+    } 
+
+    public function login()
+    {
+        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+        $password = filter_input(INPUT_POST, 'password');
+
+        $user = new User;
+
+        $currentUser = $user->findUserByMail($email);
+
+        if($currentUser !== false){
+            $currentPassword = $currentUser->getPassword();
+
+            if( password_verify($password, $currentPassword) === true ){
+                $_SESSION['userConnected']  = true;
+                $_SESSION['user']  = $currentUser;
+                $_SESSION['response']  = 'ok';
+
+                $this->redirect('home');
+            } 
+            else{
+                $this->redirect('err404');
+               
+            } 
+        } else{
+            $this->redirect('err404');
+            
+        } 
+    } 
+
+    public function logout()
+   {
+    unset($_SESSION['user']);
+    unset($_SESSION['userConnected']);
+    unset($_SESSION['response']);
+    
+    $this->redirect('home');
+
+    
+
+   } 
 
 
 

@@ -14,8 +14,9 @@ class MainController extends CoreController
 
     public function home()
     {
-        $this->show( 'home');
+        $this->show('home');
     }
+
     public function activity()
     {
         $activities = new Activity();
@@ -26,6 +27,7 @@ class MainController extends CoreController
 
         $this->show( 'activity', $param );
     }
+    
     public function shoppinglist()
     {
 
@@ -70,9 +72,5 @@ class MainController extends CoreController
         $this->show( 'user', $param);
     }
 
-    public function err404()
-    {
-        $this->show( 'err404' );
-    }
 
 }
