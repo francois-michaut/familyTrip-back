@@ -1,11 +1,11 @@
 <main class="home">
     <h2 class="home__title">
       <?php if($_SESSION['user']){
-         echo($_SESSION['user']->getPseudo());
+         echo('Bienvenue '. $_SESSION['user']->getPseudo());
         } else{
-          echo('Bienvenue');
+          echo('      C\'est ici que vous pouvez gérer vos Tribus  et leur différentes données.
+          ');
         }?>
-      C'est ici que vous pouvez gérer vos Tribus  et leur différentes données.
     </h2>
     <form action="" method="post" class="home__connexion">
         <label for="email">Votre email</label>
