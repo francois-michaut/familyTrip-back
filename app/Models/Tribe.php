@@ -65,7 +65,7 @@ class Tribe extends CoreModel
 
         $statement = $pdo->prepare( $sql );
 
-        $statement->bindParam(':name', $tribeName);
+        $statement->bindValue(':name', $tribeName, PDO::PARAM_STR);
 
         $statement->execute();
 

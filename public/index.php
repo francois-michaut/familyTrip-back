@@ -3,14 +3,14 @@
 // Outils Composer
 require __DIR__ . '//../vendor/autoload.php';
 
-session_start();
-
-$router = new AltoRouter();
-
 
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Methods:  OPTIONS, GET, POST, PUT, DELETE");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, X-Requested-With");
+session_start();
+
+$router = new AltoRouter();
+
 
 if (array_key_exists('BASE_URI', $_SERVER)) {
     // Alors on définit le basePath d'AltoRouter
@@ -58,7 +58,18 @@ $router->map(
    ],
    'logout'  
 );
-
+// ====================
+// Routes des erreurs
+// ===================
+$router->map(
+    'GET',
+    '/error',
+    [
+        'method' => 'err404',
+        'controller' => 'Admin\ErrorController'
+    ],
+    'err404'
+);
 // ====================
 // Routes des activités
 // ====================

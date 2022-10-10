@@ -17,7 +17,7 @@
             <a href="<?= $router->generate('logout')?>">Déconnexion</a>
         <?php }  ?>
         <nav class="header__navbar">
-            <?php if(!$_SESSION['user']){ ?>
+            <?php if(!isset($_SESSION['user'])){ ?>
                 <ul class="header__navbar-list">
                     <li></li>
                     <li></li>

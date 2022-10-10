@@ -67,7 +67,7 @@ class User extends CoreModel
 
     public function addUser($userName, $userEmail, $userPassword)
    {
-    $pdo = Database::getPdo();
+    $pdo = Database::getPDO();
 
     $sql = "INSERT INTO `USER` (pseudo, email, password, role) VALUES (:pseudo, :email, :password, :role)";
 

@@ -1,6 +1,6 @@
 <main class="home">
     <h2 class="home__title">
-      <?php if($_SESSION['user']){
+      <?php if(isset($_SESSION['user'])){
          echo('Bienvenue '. $_SESSION['user']->getPseudo());
         } else{
           echo('      C\'est ici que vous pouvez gérer vos Tribus  et leur différentes données.
