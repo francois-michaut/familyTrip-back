@@ -24,14 +24,16 @@ class UserController
 
     $user = json_decode($data, true);
 
-    $pseudo = $user['userName'];
-    $email = $user['userEmail'];
+    $pseudo = $user['userPseudo'];
+    $name = $user['userName'];
+    $firstname = $user['userFirstname'];
+    $email = $user['userMail'];
     $password = $user['userPassword'];
     $hashPassword = password_hash($password, PASSWORD_DEFAULT);
 
     $user = new User();
     
-    $user->addUser($pseudo, $email, $hashPassword);
+    $user->addUser($name, $firstname,$email, $hashPassword, $pseudo);
 
     return $user;
 

@@ -65,18 +65,20 @@ class User extends CoreModel
         return $membersList;
     }
 
-    public function addUser($userName, $userEmail, $userPassword)
+    public function addUser($userName,$userFirstname, $userEmail, $userPassword, $userPseudo)
    {
     $pdo = Database::getPDO();
 
-    $sql = "INSERT INTO `USER` (pseudo, email, password, role) VALUES (:pseudo, :email, :password, :role)";
+    $sql = "INSERT INTO `USER` (pseudo, email, password, role, firstname, lastname) VALUES (:pseudo, :email, :password, :role, :lastname, :firstname)";
 
     $role = 'user';
 
     $statement = $pdo->prepare($sql);
 
 
-    $statement->bindParam(':pseudo', $userName);
+    $statement->bindParam(':pseudo', $userPseudo);
+    $statement->bindParam(':lastname', $userName);
+    $statement->bindParam(':firstname', $userFirstname);
     $statement->bindParam(':email', $userEmail);
     $statement->bindParam(':password', $userPassword);
     $statement->bindParam(':role', $role);
